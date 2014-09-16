@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Numero certificado:</strong>
+  <%= @certificado.numero_certificado %>
+</p>
+
+<p>
+  <strong>Numero guia proveedor:</strong>
+  <%= @certificado.numero_guia_proveedor %>
+</p>
+
+<p>
+  <strong>Numero codigo producto:</strong>
+  <%= @certificado.numero_codigo_producto %>
+</p>
+
+<p>
+  <strong>Numero colada:</strong>
+  <%= @certificado.numero_colada %>
+</p>
+
+<p>
+  <strong>Numero orden compra:</strong>
+  <%= @certificado.numero_orden_compra %>
+</p>
+
+<%= link_to 'Edit', edit_certificado_path(@certificado) %> |
+<%= link_to 'Back', certificados_path %>

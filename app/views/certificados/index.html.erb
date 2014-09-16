@@ -1,0 +1,33 @@
+<h1>Listing certificados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Numero certificado</th>
+      <th>Numero guia proveedor</th>
+      <th>Numero codigo producto</th>
+      <th>Numero colada</th>
+      <th>Numero orden compra</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @certificados.each do |certificado| %>
+      <tr>
+        <td><%= certificado.numero_certificado %></td>
+        <td><%= certificado.numero_guia_proveedor %></td>
+        <td><%= certificado.numero_codigo_producto %></td>
+        <td><%= certificado.numero_colada %></td>
+        <td><%= certificado.numero_orden_compra %></td>
+        <td><%= link_to 'Show', certificado %></td>
+        <td><%= link_to 'Edit', edit_certificado_path(certificado) %></td>
+        <td><%= link_to 'Destroy', certificado, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Certificado', new_certificado_path %>

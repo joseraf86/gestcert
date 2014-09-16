@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numero_certificado: MyString
+  numero_guia_proveedor: MyString
+  numero_codigo_producto: MyString
+  numero_colada: MyString
+  numero_orden_compra: MyString
+
+two:
+  numero_certificado: MyString
+  numero_guia_proveedor: MyString
+  numero_codigo_producto: MyString
+  numero_colada: MyString
+  numero_orden_compra: MyString

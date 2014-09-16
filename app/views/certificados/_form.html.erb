@@ -1,0 +1,37 @@
+<%= form_for(@certificado) do |f| %>
+  <% if @certificado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@certificado.errors.count, "error") %> prohibited this certificado from being saved:</h2>
+
+      <ul>
+      <% @certificado.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :numero_certificado %><br>
+    <%= f.text_field :numero_certificado %>
+  </div>
+  <div class="field">
+    <%= f.label :numero_guia_proveedor %><br>
+    <%= f.text_field :numero_guia_proveedor %>
+  </div>
+  <div class="field">
+    <%= f.label :numero_codigo_producto %><br>
+    <%= f.text_field :numero_codigo_producto %>
+  </div>
+  <div class="field">
+    <%= f.label :numero_colada %><br>
+    <%= f.text_field :numero_colada %>
+  </div>
+  <div class="field">
+    <%= f.label :numero_orden_compra %><br>
+    <%= f.text_field :numero_orden_compra %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
