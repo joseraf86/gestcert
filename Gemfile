@@ -41,3 +41,7 @@ gem 'spring',        group: :development
 ## Gemas adicionales
 # Authenticacion
 gem 'devise'
+
+# Authorization
+gem 'the_role', '~> 2.5.2'
+gem 'the_role_bootstrap3_ui'

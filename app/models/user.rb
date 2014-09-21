@@ -5,4 +5,9 @@ class User < ActiveRecord::Base
   # :registerable, :trackable, :recoverable, :validatable
 
   devise :database_authenticatable, :rememberable
+
+  include TheRole::User
+  # alias for AR:
+  # has_role
+  # has_many :pages
 end

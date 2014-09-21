@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  concern :the_role, TheRole::AdminRoutes.new
+  namespace :admin do
+    concerns :the_role
+  end
+
   resources :certificados
 
   # The priority is based upon order of creation: first created -> highest priority.
