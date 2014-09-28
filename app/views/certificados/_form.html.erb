@@ -1,5 +1,5 @@
 <%= form_for @certificado, 
-	:html => {:class => 'i_form1 navbar-form navbar-left'} do |f| %>
+	:html => {:class => 'i_form1 navbar-form navbar-left', :multipart => true} do |f| %>
   
   <% if @certificado.errors.any? %>
     <div id="error_explanation">
@@ -51,6 +51,8 @@
           <%= f.label :numero_codigo_producto %><br>
           <%= f.text_field :numero_codigo_producto, class:'form-control' %>
         </div>
+
+         <%= f.file_field :adjunto %>
 
 	<button type="submit" class="btn btn-default"><%= f.submit %></button>
 

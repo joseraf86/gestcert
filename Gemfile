@@ -45,3 +45,6 @@ gem 'devise'
 # Authorization
 gem 'the_role', '~> 2.5.2'
 gem 'the_role_bootstrap3_ui'
+
+# File upload
+gem "paperclip", "~> 4.2"

@@ -28,5 +28,17 @@
   <%= @certificado.numero_orden_compra %>
 </p>
 
+<p>
+<%= image_tag @certificado.adjunto.url %>
+</p>
+
+<p>
+<%= image_tag @certificado.adjunto.url(:medium) %>
+</p>
+
+<p>
+<%= image_tag @certificado.adjunto.url(:thumb) %>
+</p>
+
 <%= link_to 'Editar', edit_certificado_path(@certificado) %> |
 <%= link_to 'Volver', certificados_path %>
