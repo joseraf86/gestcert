@@ -10,9 +10,19 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require bootstrap
  *= require_self
+ *= require_tree .
  */
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../assets/glyphicons-halflings-regular.eot');
+  src: url('../assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), 
+       url('../assets/glyphicons-halflings-regular.woff') format('woff'), 
+       url('../assets/glyphicons-halflings-regular.ttf') format('truetype'), 
+       url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
 
 ul.hmenu {
     list-style: none;
@@ -22,4 +32,16 @@ ul.hmenu {
 
 ul.hmenu li {
     display: inline;
+}
+
+form.mi_form1 {
+    margin:10px;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+article.contenido {
+  padding: 0 6px;
 }

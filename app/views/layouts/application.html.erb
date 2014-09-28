@@ -8,13 +8,28 @@
 </head>
 <body>
 
-<ul class="hmenu">
-  <%= render 'devise/menu/login_items' %>
-</ul>
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+  <ul class="hmenu">
+    <%= render 'devise/menu/login_items' %>
+  </ul>
+ 
+  </div>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
+</nav>
+
+<article class="contenido">
+ <p class="notice"><%= notice %></p>
+ <%= yield %>
+ <p class="alert"><%= alert %></p>
+</article>
 
 </body>
 </html>

@@ -4,6 +4,11 @@
 </p>
 
 <p>
+  <strong>Proveedor:</strong>
+  <%= @certificado.proveedor.name %>
+</p>
+
+<p>
   <strong>Numero guia proveedor:</strong>
   <%= @certificado.numero_guia_proveedor %>
 </p>
@@ -23,5 +28,5 @@
   <%= @certificado.numero_orden_compra %>
 </p>
 
-<%= link_to 'Edit', edit_certificado_path(@certificado) %> |
-<%= link_to 'Back', certificados_path %>
+<%= link_to 'Editar', edit_certificado_path(@certificado) %> |
+<%= link_to 'Volver', certificados_path %>

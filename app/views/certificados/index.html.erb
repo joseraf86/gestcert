@@ -1,6 +1,6 @@
-<h1>Listing certificados</h1>
+<h1>Certificados</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Numero certificado</th>
@@ -20,9 +20,9 @@
         <td><%= certificado.numero_codigo_producto %></td>
         <td><%= certificado.numero_colada %></td>
         <td><%= certificado.numero_orden_compra %></td>
-        <td><%= link_to 'Show', certificado %></td>
-        <td><%= link_to 'Edit', edit_certificado_path(certificado) %></td>
-        <td><%= link_to 'Destroy', certificado, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', certificado %></td>
+        <td><%= link_to 'Editar', edit_certificado_path(certificado) %></td>
+        <td><%= link_to 'Eliminar', certificado, method: :delete, data: { confirm: 'Esta seguro de que desea eliminar el certificado?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Certificado', new_certificado_path %>
+<%= link_to 'Nuevo Certificado', new_certificado_path %>

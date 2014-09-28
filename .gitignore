@@ -21,3 +21,6 @@
 
 # Ignore RubyMine IDE files
 /.idea/*
+
+# Ignore gedit temp files
+*~
