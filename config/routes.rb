@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+=begin
+  get 'proveedors/index'
+
+  get 'proveedors/show'
+
+  get 'proveedors/new'
+
+  get 'proveedors/edit'
+
+  get 'proveedors/create'
+
+  get 'proveedors/update'
+
+  get 'proveedors/destroy'
+=end
   devise_for :users
 
   concern :the_role, TheRole::AdminRoutes.new
@@ -7,6 +22,8 @@ Rails.application.routes.draw do
   end
 
   resources :certificados
+
+  resources :proveedors
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,45 @@
+<%= form_for @proveedor,
+             :html => {:class => 'i_form1 navbar-form navbar-left', :multipart => true} do |f| %>
+
+    <% if @proveedor.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@proveedor.errors.count, "error") %> prohibited this proveedor from being saved:</h2>
+
+          <ul>
+            <% @proveedor.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-xs-6 col-md-6">
+
+        <div class="form-group">
+          <%= f.label :name %><br>
+          <%= f.text_field :name, class:'form-control' %>
+        </div>
+
+
+        <div class="form-group">
+          <%= f.label :rif %><br>
+          <%= f.text_field :rif, class:'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :nacional %><br>
+          <%= f.check_box :nacional, class:'form-control' %>
+        </div>
+
+        <button type="submit" class="btn btn-default"><%= f.submit %></button>
+
+      </div>
+    </div>
+
+<% end %>
+
+
+
+
+

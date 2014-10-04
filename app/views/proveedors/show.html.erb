@@ -1,0 +1,18 @@
+<p>
+  <strong>Nombre:</strong>
+  <%= @proveedor.name %>
+</p>
+
+<p>
+  <strong>rif:</strong>
+  <%= @proveedor.rif %>
+</p>
+
+<p>
+  <strong>nacional:</strong>
+  <%= @proveedor.nacional %>
+</p>
+
+<%= link_to 'Editar Proveedor', edit_proveedor_path(@proveedor) %> |
+<%= link_to 'Volver', proveedors_path %>
+

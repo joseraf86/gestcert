@@ -1,0 +1,29 @@
+<h1>Proveedores</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Rif</th>
+    <th>Nacional</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @proveedors.each do |proveedor| %>
+      <tr>
+        <td><%= proveedor.name %></td>
+        <td><%= proveedor.rif %></td>
+        <td><%= proveedor.nacional %></td>
+        <td><%= link_to 'Ver', proveedor %></td>
+        <td><%= link_to 'Editar', edit_proveedor_path(proveedor) %></td>
+        <td><%= link_to 'Eliminar', proveedor, method: :delete, data: { confirm: 'Esta seguro de que desea eliminar el proveedor?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Proveedor', new_proveedor_path %>
