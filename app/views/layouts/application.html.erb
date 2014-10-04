@@ -27,7 +27,9 @@
 
 <article class="contenido">
  <p class="notice"><%= notice %></p>
- <%= yield %>
+  <%= yield :role_sidebar %>
+  <%= yield :role_main %>
+  <%= yield %>
  <p class="alert"><%= alert %></p>
 </article>
 
