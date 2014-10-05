@@ -1,6 +1,14 @@
 <h1>Editar certificado</h1>
 
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', certificados_path %></li>
+  <li class="active">Editar Certificado</li>
+</ol>
+
 <%= render 'form' %>
 
-<%= link_to 'Ver', @certificado %> |
+<% if current_user.has_role?(:certificados, :show) %>
+    <%= link_to 'Ver', @certificado %>
+<% end %>
+ |
 <%= link_to 'Volver a Certificados', certificados_path %>

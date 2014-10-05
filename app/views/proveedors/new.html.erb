@@ -1,8 +1,9 @@
 <h1>Nuevo Proveedor</h1>
 
 <ol class="breadcrumb">
-  <li><a href="#">Inicio</a></li>
-  <li class="active">Proveedors</li>
+  <li><%= link_to 'Inicio', certificados_path %></li>
+  <li><%= link_to 'Proveedores', proveedors_path %></li>
+  <li class="active">Registrar</li>
 </ol>
 
 <%= render 'form' %>

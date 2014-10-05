@@ -1,13 +1,18 @@
 <h1>Certificados</h1>
 
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', certificados_path %></li>
+  <li class="active">Certificados</li>
+</ol>
+
 <table class="table">
   <thead>
     <tr>
-      <th>Numero certificado</th>
-      <th>Numero guia proveedor</th>
-      <th>Numero codigo producto</th>
-      <th>Numero colada</th>
-      <th>Numero orden compra</th>
+      <th>Nro. de Certificado</th>
+      <th>Guia de Proveedor</th>
+      <th>Codigo de Producto</th>
+      <th>Colada</th>
+      <th>Orden de compra</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,25 +25,25 @@
         <td><%= certificado.numero_codigo_producto %></td>
         <td><%= certificado.numero_colada %></td>
         <td><%= certificado.numero_orden_compra %></td>
-        <td><%= link_to(certificado, {:class => 'btn btn-small'}) do %>
-		<span class="glyphicon glyphicon-search"></span>
-	    <% end %>
-	</td>
-	<td><%= link_to( edit_certificado_path(certificado), 
-		  {:class => 'btn btn-small'}) do %>
-		<span class="glyphicon glyphicon-edit"></span>
-	    <% end %>
-	</td>
-        <td><%= link_to certificado, {method: :delete, data: { confirm: 'Esta seguro de que desea eliminar el certificado?'}, class: 'btn btn-small'} do %>
-	     <span class="glyphicon glyphicon-remove"></span>
+        <% if current_user.has_role?(:certificados, :show) %>
+          <td><%= link_to(certificado, {:class => 'btn btn-small'}) do %>
+		        <span class="glyphicon glyphicon-search"></span>
+	          <% end %>
+	      </td>
+        <% end %>
+        <% if current_user.has_role?(:certificados, :edit) %>
+          <td><%= link_to( edit_certificado_path(certificado),
+		    {:class => 'btn btn-small'}) do %>
+		    <span class="glyphicon glyphicon-edit"></span>
+	        <% end %>
+	      </td>
+        <% end %>
+        <% if current_user.has_role?(:certificados, :delete) %>
+          <td><%= link_to certificado, {method: :delete, data: { confirm: 'Esta seguro de que desea eliminar el certificado?'}, class: 'btn btn-small'} do %>
+	        <span class="glyphicon glyphicon-remove"></span>
             <% end %>
-	</td>
-
-
-
-
-
-	</td>
+	      </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -46,4 +51,6 @@
 
 <br>
 
-<%= link_to 'Nuevo Certificado', new_certificado_path %>
+<% if current_user.has_role?(:certificados, :new) %>
+   <%= link_to 'Nuevo Certificado', new_certificado_path %>
+<% end %>
