@@ -20,9 +20,25 @@
         <td><%= certificado.numero_codigo_producto %></td>
         <td><%= certificado.numero_colada %></td>
         <td><%= certificado.numero_orden_compra %></td>
-        <td><%= link_to 'Ver', certificado %></td>
-        <td><%= link_to 'Editar', edit_certificado_path(certificado) %></td>
-        <td><%= link_to 'Eliminar', certificado, method: :delete, data: { confirm: 'Esta seguro de que desea eliminar el certificado?' } %></td>
+        <td><%= link_to(certificado, {:class => 'btn btn-small'}) do %>
+		<span class="glyphicon glyphicon-search"></span>
+	    <% end %>
+	</td>
+	<td><%= link_to( edit_certificado_path(certificado), 
+		  {:class => 'btn btn-small'}) do %>
+		<span class="glyphicon glyphicon-edit"></span>
+	    <% end %>
+	</td>
+        <td><%= link_to certificado, {method: :delete, data: { confirm: 'Esta seguro de que desea eliminar el certificado?'}, class: 'btn btn-small'} do %>
+	     <span class="glyphicon glyphicon-remove"></span>
+            <% end %>
+	</td>
+
+
+
+
+
+	</td>
       </tr>
     <% end %>
   </tbody>
