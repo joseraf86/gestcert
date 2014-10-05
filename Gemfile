@@ -47,7 +47,7 @@ gem 'the_role', '~> 2.5.2'
 gem 'the_role_bootstrap3_ui'
 
 # File upload
-gem "paperclip", "~> 4.2"
+gem 'paperclip', '~> 4.2'
 
 # Dump database contents to seed.rb file
 gem 'seed_dump'
