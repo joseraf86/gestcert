@@ -1,5 +1,7 @@
 class ProveedorsController < ApplicationController
   before_action :set_proveedor, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!#, except: [:index, :show]
+  before_action :role_required#,  except: [:index, :show]
 
   def index
     @proveedors = Proveedor.all

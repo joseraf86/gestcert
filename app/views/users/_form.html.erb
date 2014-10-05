@@ -1,0 +1,51 @@
+<%= form_for @user,
+             :html => {:class => 'i_form1 navbar-form navbar-left'} do |f| %>
+
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-xs-6 col-md-6">
+
+        <div class="form-group">
+          <%= f.label :name %><br>
+          <%= f.text_field :name, class:'form-control' %>
+        </div>
+
+
+        <div class="form-group">
+          <%= f.label :password %><br>
+          <%= f.password_field :password, class:'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation %><br>
+          <%= f.password_field :password_confirmation, class:'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :roles %><br>
+          <%= f.collection_select( :role_id,
+                                   Role.all,
+                                   :id,
+                                   :name,
+                                   {:prompt=>true},
+                                   {:class=>'form-control-static'}
+              ) %>
+        </div>
+
+        <button type="submit" class="btn btn-default"><%= f.submit %></button>
+
+      </div>
+    </div>
+
+<% end %>

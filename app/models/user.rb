@@ -10,4 +10,12 @@ class User < ActiveRecord::Base
   # alias for AR:
   # has_role
   # has_many :pages
+
+  validates :password, confirmation: true
+  validates :role,
+            :name,
+            :password,
+            :password_confirmation,
+            presence: true
+
 end

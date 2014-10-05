@@ -1,0 +1,12 @@
+<p>
+  <strong>Nombre:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>rol:</strong>
+  <%= @user.role.name %>
+</p>
+
+<%= link_to 'Editar User', edit_user_path(@user) %> |
+<%= link_to 'Volver', users_path %>

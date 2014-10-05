@@ -1,0 +1,28 @@
+<h1>Usuario</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>rol</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.role.name %></td>
+        <td><%= link_to 'Ver', user %></td>
+        <td><%= link_to 'Editar', edit_user_path(user) %></td>
+        <td><%= link_to 'Eliminar', user, method: :delete, data: { confirm: 'Esta seguro de que desea eliminar el user?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Usuario', new_user_path %>
+
