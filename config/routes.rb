@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/index'
+
 =begin
   get 'users/index'
 

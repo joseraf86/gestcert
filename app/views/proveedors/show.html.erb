@@ -1,7 +1,10 @@
-<p>
-  <strong>Nombre:</strong>
-  <%= @proveedor.name %>
-</p>
+<h1>Proveedor: <%= @proveedor.name %></h1>
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li><%= link_to 'Proveedores', proveedors_path %></li>
+  <li class="active">Ver</li>
+</ol>
 
 <p>
   <strong>RIF:</strong>
@@ -9,8 +12,12 @@
 </p>
 
 <p>
-  <strong>nacional:</strong>
-  <%= @proveedor.nacional %>
+  <strong>Nacional:</strong>
+  <% if @proveedor.nacional %>
+    Si
+  <% else %>
+    No
+  <% end %>
 </p>
 
 <% if current_user.has_role?(:proveedors, :edit) %>

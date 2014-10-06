@@ -1,11 +1,10 @@
 Role.create!([
-                 {name: "admin", title: "role for admin", description: "this user can do anything", the_role: "{\"system\":{\"administrator\":true}}"}
+                 {name: "admin", title: "role for admin", description: "this user can do anything", the_role: "{\"system\":{\"administrator\":true}}"},
+                 {name: "recepcion", title: "Recepcion de Materiales", description: "Rol para el personal que recibe materiales", the_role: "{\"certificados\":{\"index\":true,\"new\":true,\"create\":true,\"show\":true,\"edit\":false,\"delete\":false},\"proveedors\":{\"index\":true,\"show\":true,\"edit\":false,\"delete\":false}}"}
              ])
 User.create!([
- # {name: "elisa", encrypted_password: "$2a$10$ja.qcymy0xktJAmZgbZRius7oH1wUPy.eITHgSr6inroR5sstMOPy", remember_created_at: nil, role_id: 1},
- # {name: "jose", encrypted_password: "$2a$10$0z/TmjIIdgB3mTfCVWpP0.aZSLXgVaWtWctlTC2xr2UxxR0gjcQKW", remember_created_at: nil, role_id: 1}
- {name: "elisa", password: 'elisa', password_confirmation: 'elisa', role_id: 1},
- {name: "jose",  password: 'jose',  password_confirmation: 'jose',  role_id: 1}
+  {name: "elisa", encrypted_password: "$2a$10$V5NXdaiLg2hNyPErx1xXV.YJM5XpwtGfs7whSXxtsk3VDkVpTKW92", remember_created_at: nil, role_id: 2},
+  {name: "jose", encrypted_password: "$2a$10$DCT8KjAyRoGivZCEmT4ICOkxwmnvsg2eQjhs8O/pDlH5.J8UZAT1O", remember_created_at: nil, role_id: 1}
 ])
 Proveedor.create!([
                       {name: "SIDOR", rif: "J-88362", nacional: true},
