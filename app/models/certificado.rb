@@ -39,6 +39,8 @@ class Certificado < ActiveRecord::Base
       query[:n_orden_compra] = {clause: 'numero_orden_compra LIKE ?', parameter: search[:n_orden_compra]}
     end
 
+    puts query.collect {|key, value| value[:parameter]}
+    conditions = query.collect {|key, value| value[:parameter]}
     if query.empty?
       all
     else
