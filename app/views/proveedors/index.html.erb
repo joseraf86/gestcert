@@ -9,7 +9,7 @@
   <thead>
   <tr>
     <th>Nombre</th>
-    <th>Rif</th>
+    <th>RIF</th>
     <th>Nacional</th>
     <th colspan="3"></th>
   </tr>
@@ -20,7 +20,13 @@
       <tr>
         <td><%= proveedor.name %></td>
         <td><%= proveedor.rif %></td>
-        <td><%= proveedor.nacional %></td>
+        <td>
+          <% if proveedor.nacional %>
+              Si
+          <% else %>
+              No
+          <% end %>
+        </td>
         <% if current_user.has_role?(:proveedors, :show) %>
             <td><%= link_to(proveedor, {:class => 'btn btn-small'}) do %>
                   <span class="glyphicon glyphicon-search"></span>
