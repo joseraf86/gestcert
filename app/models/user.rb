@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   # has_many :pages
 
   validates :password, confirmation: true
-  validates :role,
+  validates :role_id,
             :name,
             :password,
             :password_confirmation,

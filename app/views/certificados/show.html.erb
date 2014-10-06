@@ -40,5 +40,8 @@
 <%= image_tag @certificado.adjunto.url(:thumb) %>
 </p>
 
-<%= link_to 'Editar', edit_certificado_path(@certificado) %> |
+<% if current_user.has_role?(:certificados, :edit) %>
+   <%= link_to 'Editar', edit_certificado_path(@certificado) %> |
+<% end %>
+
 <%= link_to 'Volver', certificados_path %>

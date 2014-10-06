@@ -1,7 +1,13 @@
 <h1>Editar Proveedor</h1>
 
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', certificados_path %></li>
+  <li><%= link_to 'Proveedores', proveedors_path %></li>
+  <li class="active">Editar</li>
+</ol>
+
 <%= render 'form' %>
 
 <%= link_to 'Ver', @proveedor %> |
-<%= link_to 'Volver', proveedors_path %>
+
 

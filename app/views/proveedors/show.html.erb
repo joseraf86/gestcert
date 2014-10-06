@@ -4,7 +4,7 @@
 </p>
 
 <p>
-  <strong>rif:</strong>
+  <strong>RIF:</strong>
   <%= @proveedor.rif %>
 </p>
 
@@ -13,6 +13,9 @@
   <%= @proveedor.nacional %>
 </p>
 
-<%= link_to 'Editar Proveedor', edit_proveedor_path(@proveedor) %> |
+<% if current_user.has_role?(:proveedors, :edit) %>
+    <%= link_to 'Editar Proveedor', edit_proveedor_path(@proveedor) %> |
+<% end %>
+
 <%= link_to 'Volver', proveedors_path %>
 
