@@ -6,7 +6,12 @@ class CertificadosController < ApplicationController
   # GET /certificados
   # GET /certificados.json
   def index
-    @certificados = Certificado.all
+    @certificados = Certificado.search({n_certificado:     params[:n_certificado],
+                                        n_guia_proveedor:  params[:n_guia_proveedor],
+                                        n_codigo_producto: params[:n_codigo_producto],
+                                        n_colada:          params[:n_colada],
+                                        n_orden_compra:    params[:n_orden_compra]})
+    #@certificados = Certificado.all
   end
 
   # GET /certificados/1

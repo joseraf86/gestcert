@@ -3,20 +3,28 @@ class ProveedorsController < ApplicationController
   before_action :authenticate_user!#, except: [:index, :show]
   before_action :role_required#,  except: [:index, :show]
 
+  # GET /proveedors
+  # GET /proveedors.json
   def index
     @proveedors = Proveedor.all
   end
 
+  # GET /proveedors/1
+  # GET /proveedors/1.json
   def show
   end
 
+  # GET /proveedors/new
   def new
     @proveedor = Proveedor.new
   end
 
+  # GET /proveedors/1/edit
   def edit
   end
 
+  # POST /proveedors
+  # POST /proveedors.json
   def create
     @proveedor = Proveedor.new(proveedor_params)
 
@@ -31,6 +39,8 @@ class ProveedorsController < ApplicationController
     end
   end
 
+  # PATCH/PUT /proveedors/1
+  # PATCH/PUT /proveedors/1.json
   def update
     respond_to do |format|
       if @proveedor.update(proveedor_params)
@@ -43,6 +53,8 @@ class ProveedorsController < ApplicationController
     end
   end
 
+  # DELETE /proveedors/1
+  # DELETE /proveedors/1.json
   def destroy
     @proveedor.destroy
     respond_to do |format|
