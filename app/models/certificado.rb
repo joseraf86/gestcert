@@ -40,7 +40,7 @@ class Certificado < ActiveRecord::Base
     end
 
     unless search[:start_date].blank?
-      query[:start_date] = {clause: 'created_at >= ?', parameter: search[:start_date]}
+      query[:start_date] = {clause: 'created_at >= ?', parameter: search[:start_date].to_date}
     end
 
     unless search[:end_date].blank?

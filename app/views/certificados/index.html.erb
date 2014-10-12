@@ -25,9 +25,11 @@
 
       <%= label_tag :n_guia_proveedor, 'Orden de compra' %>
       <%= text_field_tag :n_orden_compra, params[:n_orden_compra] %><br/>
+
+      <%= label_tag :fecha, 'Fecha' %> ejemplo 12/10/2014
       <div class="input-daterange input-group" id="datepicker">
         <input type="text" class="input-sm form-control" name="start_date" />
-        <span class="input-group-addon">to</span>
+        <span class="input-group-addon">hasta</span>
         <input type="text" class="input-sm form-control" name="end_date" />
       </div>
       <%= submit_tag 'Buscar', :name => nil %>

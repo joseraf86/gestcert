@@ -22,14 +22,8 @@
       </div>
 
       <div class="form-group">
-          <%= f.label :proveedors %><br>
-          <%= f.collection_select( :proveedor_id, 
-                             Proveedor.all, 
-                             :id,
-                             :name,
-                             {:prompt=>true}, 
-			     {:class=>'form-control-static'}
-	      ) %>
+        <%= f.label :numero_guia_proveedor %><br>
+        <%= f.text_field :numero_guia_proveedor, class:'form-control' %>
       </div>
 
 	  <div class="form-group">
@@ -43,10 +37,18 @@
 	    <%= f.label :numero_orden_compra %><br>
 	    <%= f.text_field :numero_orden_compra, class:'form-control' %>
 	    </div>
+
         <div class="form-group">
-          <%= f.label :numero_guia_proveedor %><br>
-          <%= f.text_field :numero_guia_proveedor, class:'form-control' %>
+          <%= f.label :proveedors %><br>
+          <%= f.collection_select( :proveedor_id,
+                                   Proveedor.all,
+                                   :id,
+                                   :name,
+                                   {:prompt=>true},
+                                   {:class=>'form-control-static'}
+              ) %>
         </div>
+
         <div class="form-group">
           <%= f.label :numero_codigo_producto %><br>
           <%= f.text_field :numero_codigo_producto, class:'form-control' %>
