@@ -10,7 +10,9 @@ class CertificadosController < ApplicationController
                                         n_guia_proveedor:  params[:n_guia_proveedor],
                                         n_codigo_producto: params[:n_codigo_producto],
                                         n_colada:          params[:n_colada],
-                                        n_orden_compra:    params[:n_orden_compra]})
+                                        n_orden_compra:    params[:n_orden_compra],
+                                        start_date:        params[:start_date],
+                                        end_date:          params[:end_date]})
     #@certificados = Certificado.all
   end
 

@@ -39,6 +39,14 @@ class Certificado < ActiveRecord::Base
       query[:n_orden_compra] = {clause: 'numero_orden_compra LIKE ?', parameter: search[:n_orden_compra]}
     end
 
+    unless search[:start_date].blank?
+      query[:start_date] = {clause: 'created_at >= ?', parameter: search[:start_date]}
+    end
+
+    unless search[:end_date].blank?
+      query[:end_date] = {clause: 'created_at <= ?', parameter: search[:end_date].to_date + 23.hour + 59.second}
+    end
+
     puts query.collect {|key, value| value[:parameter]}
     conditions = query.collect {|key, value| value[:parameter]}
     if query.empty?
