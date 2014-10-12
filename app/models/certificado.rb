@@ -40,11 +40,11 @@ class Certificado < ActiveRecord::Base
     end
 
     unless search[:start_date].blank?
-      query[:start_date] = {clause: 'created_at >= ?', parameter: search[:start_date].to_date}
+      query[:start_date] = {clause: 'fecha_recepcion >= ?', parameter: search[:start_date].to_date}
     end
 
     unless search[:end_date].blank?
-      query[:end_date] = {clause: 'created_at <= ?', parameter: search[:end_date].to_date + 23.hour + 59.second}
+      query[:end_date] = {clause: 'fecha_recepcion <= ?', parameter: search[:end_date].to_date + 23.hour + 59.second}
     end
 
     puts query.collect {|key, value| value[:parameter]}

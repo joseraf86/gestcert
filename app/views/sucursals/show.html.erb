@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @sucursal.nombre %>
+</p>
+
+<p>
+  <strong>Organizacion:</strong>
+  <%= @sucursal.organizacion.nombre %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @sucursal.direccion %>
+</p>
+
+<%= link_to 'Edit', edit_sucursal_path(@sucursal) %> |
+<%= link_to 'Back', sucursals_path %>

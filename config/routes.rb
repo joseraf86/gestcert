@@ -1,35 +1,7 @@
 Rails.application.routes.draw do
+
   get 'home/index'
 
-=begin
-  get 'users/index'
-
-  get 'users/show'
-
-  get 'users/new'
-
-  get 'users/edit'
-
-  get 'users/create'
-
-  get 'users/update'
-
-  get 'users/destroy'
-
-  get 'proveedors/index'
-
-  get 'proveedors/show'
-
-  get 'proveedors/new'
-
-  get 'proveedors/edit'
-
-  get 'proveedors/create'
-
-  get 'proveedors/update'
-
-  get 'proveedors/destroy'
-=end
   devise_for :users
 
   concern :the_role, TheRole::AdminRoutes.new
@@ -42,6 +14,8 @@ Rails.application.routes.draw do
   resources :proveedors
 
   resources :users
+
+  resources :sucursals
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
