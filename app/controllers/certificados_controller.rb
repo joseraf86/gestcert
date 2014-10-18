@@ -12,7 +12,8 @@ class CertificadosController < ApplicationController
                                         n_colada:          params[:n_colada],
                                         n_orden_compra:    params[:n_orden_compra],
                                         start_date:        params[:start_date],
-                                        end_date:          params[:end_date]}).order(fecha_recepcion: :desc)
+                                        end_date:          params[:end_date]})
+    @certificados = @certificados.page(params[:page]).order('fecha_recepcion DESC')
     #@certificados = Certificado.all
   end
 

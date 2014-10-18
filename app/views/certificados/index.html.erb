@@ -53,6 +53,10 @@
     </div>
 <% end %>
 
+<% if current_user.has_role?(:certificados, :new) %>
+    <%= link_to 'Nuevo Certificado', new_certificado_path %>
+<% end %>
+
 <table class="table">
   <thead>
     <tr>
@@ -99,11 +103,12 @@
   </tbody>
 </table>
 
-<br>
-
-<% if current_user.has_role?(:certificados, :new) %>
-   <%= link_to 'Nuevo Certificado', new_certificado_path %>
-<% end %>
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @certificates %>
+  </div>
+  <%= will_paginate @certificates, :container => false %>
+</div>
 
 <script>
     $('#sandbox-container .input-daterange').datepicker({

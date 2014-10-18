@@ -1,4 +1,5 @@
 class Certificado < ActiveRecord::Base
+  self.per_page = 5
 
   belongs_to :proveedor
 

@@ -51,3 +51,6 @@ gem 'paperclip', '~> 4.2'
 
 # Dump database contents to seed.rb file
 gem 'seed_dump'
+
+# Paginacion
+gem 'will_paginate', '~> 3.0'
