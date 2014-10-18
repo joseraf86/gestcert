@@ -2,6 +2,7 @@ class Certificado < ActiveRecord::Base
   self.per_page = 5
 
   belongs_to :proveedor
+  belongs_to :sucursal
 
   has_attached_file :adjunto, 
                     :styles => { :medium => "300x300>",
@@ -48,7 +49,11 @@ class Certificado < ActiveRecord::Base
       query[:end_date] = {clause: 'fecha_recepcion <= ?', parameter: search[:end_date].to_date + 23.hour + 59.second}
     end
 
-    puts query.collect {|key, value| value[:parameter]}
+    unless search[:sucursal_id].blank?
+      query[:sucursal_id] = {clause: 'sucursal_id = ?', parameter: search[:sucursal_id].to_i }
+    end
+
+    #puts query.collect {|key, value| value[:parameter]}
     conditions = query.collect {|key, value| value[:parameter]}
     if query.empty?
       all

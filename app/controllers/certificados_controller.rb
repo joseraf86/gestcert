@@ -12,9 +12,15 @@ class CertificadosController < ApplicationController
                                         n_colada:          params[:n_colada],
                                         n_orden_compra:    params[:n_orden_compra],
                                         start_date:        params[:start_date],
-                                        end_date:          params[:end_date]})
+                                        end_date:          params[:end_date],
+                                        sucursal_id:       params[:sucursal_id]})
     @certificados = @certificados.page(params[:page]).order('fecha_recepcion DESC')
     #@certificados = Certificado.all
+    if params[:sucursal_id].nil?
+      @sucursal_id = current_user.sucursal.id
+    else
+      @sucursal_id = params[:sucursal_id]
+    end
   end
 
   # GET /certificados/1
@@ -82,6 +88,14 @@ class CertificadosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def certificado_params
-      params.require(:certificado).permit(:numero_certificado, :numero_guia_proveedor, :numero_codigo_producto, :numero_colada, :numero_orden_compra, :proveedor_id, :adjunto, :fecha_recepcion)
+      params.require(:certificado).permit(:numero_certificado,
+                                          :numero_guia_proveedor,
+                                          :numero_codigo_producto,
+                                          :numero_colada,
+                                          :numero_orden_compra,
+                                          :proveedor_id,
+                                          :adjunto,
+                                          :fecha_recepcion,
+                                          :sucursal_id)
     end
 end

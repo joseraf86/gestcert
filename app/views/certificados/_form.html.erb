@@ -55,14 +55,27 @@
 	  </div>
 
       <div class="form-group">
-        <%= f.label :proveedors, class:'control-label col-xs-7' %>
+        <%= f.label :proveedores, class:'control-label col-xs-7' %>
         <div class="col-xs-12">
           <%= f.collection_select( :proveedor_id,
                                    Proveedor.all,
                                    :id,
                                    :name,
-                                   {:prompt=>true},
-                                   {:class=>'form-control-static'}
+                                   {prompt: true},
+                                   {class:'form-control-static'}
+              ) %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :sucursales, class:'control-label col-xs-7' %>
+        <div class="col-xs-12">
+          <%= f.collection_select( :sucursal_id,
+                                   Sucursal.all,
+                                   :id,
+                                   :nombre,
+                                   {prompt: true, selected: current_user.sucursal.id},
+                                   {class:'form-control-static'}
               ) %>
         </div>
       </div>
