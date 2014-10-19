@@ -11,7 +11,7 @@
  * file per style scope.
  *
  *= require bootstrap
- *= requiere datepicker
+ *= require jquery-ui
  *= require_self
  *= require_tree .
  */
@@ -151,3 +151,15 @@ article.contenido {
     margin-right: 1em; }
 .flickr_pagination .next_page {
     margin-left: 1em; }
+
+h1
+{
+    text-shadow: 2px 2px 2px #CCCCCC;
+    font-size: large;
+    opacity: 0.5;
+}
+
+.emboss {
+    color: #002a80;
+    text-shadow: -1px -1px 1px #FFFFFF, 1px 1px 1px #000000;
+}

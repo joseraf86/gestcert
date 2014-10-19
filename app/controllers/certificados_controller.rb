@@ -31,6 +31,10 @@ class CertificadosController < ApplicationController
   # GET /certificados/1
   # GET /certificados/1.json
   def show
+    respond_to do |format|
+      format.html { render :layout => !request.xhr? }
+      # other formats
+    end
   end
 
   # GET /certificados/new

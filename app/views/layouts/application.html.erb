@@ -35,12 +35,12 @@
  <% end %>
 
   <% if user_signed_in? %>
-      <li>
-        sucursal: <%= current_user.sucursal.nombre %>
-      </li>
-      <li>
+      <p>
+        Sucursal: <%= current_user.sucursal.nombre %>
+      </p>
+      <div class="well">
         Para reportar problemas en el sistema contactar al departamento de computación. Extensión: 228-229.
-      </li>
+      </div>
   <% end %>
 </article>
 
