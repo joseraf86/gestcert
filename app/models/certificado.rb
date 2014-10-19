@@ -53,6 +53,10 @@ class Certificado < ActiveRecord::Base
       query[:sucursal_id] = {clause: 'sucursal_id = ?', parameter: search[:sucursal_id].to_i }
     end
 
+    unless search[:proveedor_id].blank?
+      query[:proveedor_id] = {clause: 'proveedor_id = ?', parameter: search[:proveedor_id].to_i }
+    end
+
     #puts query.collect {|key, value| value[:parameter]}
     conditions = query.collect {|key, value| value[:parameter]}
     if query.empty?

@@ -30,7 +30,10 @@
   <%= yield :role_sidebar %>
   <%= yield :role_main %>
   <%= yield %>
- <p class="alert"><%= alert %></p>
+ <% unless alert.nil? %>
+   <div class="alert alert-danger"><%= alert %></div>
+ <% end %>
+
   <% if user_signed_in? %>
       <li>
         sucursal: <%= current_user.sucursal.nombre %>

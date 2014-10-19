@@ -13,13 +13,18 @@ class CertificadosController < ApplicationController
                                         n_orden_compra:    params[:n_orden_compra],
                                         start_date:        params[:start_date],
                                         end_date:          params[:end_date],
-                                        sucursal_id:       params[:sucursal_id]})
+                                        sucursal_id:       params[:sucursal_id],
+                                        proveedor_id:      params[:proveedor_id]})
     @certificados = @certificados.page(params[:page]).order('fecha_recepcion DESC')
     #@certificados = Certificado.all
     if params[:sucursal_id].nil?
       @sucursal_id = current_user.sucursal.id
     else
       @sucursal_id = params[:sucursal_id]
+    end
+
+    unless params[:proveedor_id].nil?
+      @proveedor_id = params[:proveedor_id]
     end
   end
 

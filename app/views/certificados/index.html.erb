@@ -5,6 +5,8 @@
   <li class="active">Certificados</li>
 </ol>
 
+<h4>Filtros de Búsquedas</h4>
+
 <%= form_tag certificados_path, :method => 'get', :class => 'form-horizontal' do %>
     <div class="col-xs-6 col-md-6">
       <div class="form-group">
@@ -53,6 +55,11 @@
       <%= select_tag 'sucursal_id',
                      options_for_select(Sucursal.all.collect{ |u| [u.nombre, u.id]}, @sucursal_id),
                      prompt: 'Todas' %>
+
+      <%= label_tag :proveedor, 'Proveedor', class:'control-label col-xs-7' %>
+      <%= select_tag 'proveedor_id',
+                     options_for_select(Proveedor.all.collect{ |u| [u.name, u.id]}, @proveedor_id),
+                     prompt: 'Seleccione' %>
 
       <%= submit_tag 'Buscar', :name => nil, :class => 'btn btn-primary' %>
       </p>

@@ -1,17 +1,5 @@
 <%= form_for @proveedor,
-             :html => {:class => 'i_form1 navbar-form navbar-left', :multipart => true} do |f| %>
-
-    <% if @proveedor.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@proveedor.errors.count, "error") %> prohibited this proveedor from being saved:</h2>
-
-          <ul>
-            <% @proveedor.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+             :html => {:class => 'i_form1 navbar-form navbar-left'} do |f| %>
 
     <div class="row">
       <div class="col-xs-6 col-md-6">
@@ -36,5 +24,27 @@
 
       </div>
     </div>
+
+    <% if @proveedor.errors.any? %>
+        <div id="error_explanation">
+          <% if @proveedor.errors.count > 1 %>
+              <h2>Ocurrieron <%= pluralize(@proveedor.errors.count, "errores") %> mientras se guardaba el proveedor: </h2>
+
+              <ul>
+                <% @proveedor.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+          <% else %>
+              <h2>Ocurrió <%= pluralize(@proveedor.errors.count, "error") %> mientras se guardaba el proveedor: </h2>
+
+              <ul>
+                <% @proveedor.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+          <% end %>
+        </div>
+    <% end %>
 
 <% end %>
