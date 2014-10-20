@@ -4,12 +4,11 @@ class Certificado < ActiveRecord::Base
   belongs_to :proveedor
   belongs_to :sucursal
 
-  has_attached_file :adjunto, 
-                    :styles => { :medium => "300x300>",
-                                 :thumb => "100x100>" },
+  has_attached_file :adjunto,
                     :default_url => "/images/:style/missing.png"
-  validates_attachment_content_type :adjunto, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :adjunto, :content_type => /\Aapplication\/pdf\Z/
 
+  validate :fecha_recepcion_is_date?
 
   validates :proveedor,
             :numero_certificado,
@@ -65,4 +64,21 @@ class Certificado < ActiveRecord::Base
       where(query.collect {|key, value| value[:clause]}.join(' AND '), *conditions)
     end
   end
+
+  private
+
+  def fecha_recepcion_is_date?
+    if !fecha_recepcion.is_a?(Date) || date_too_old || date_too_new
+      errors.add(:fecha_recepcion, 'debe ser una fecha válida')
+    end
+  end
+
+  def date_too_old
+    fecha_recepcion <= '01/01/1970'.to_date
+  end
+
+  def date_too_new
+    fecha_recepcion >= '31/12/2050'.to_date
+  end
+
 end

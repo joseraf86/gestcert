@@ -6,6 +6,7 @@ class CertificadosController < ApplicationController
   # GET /certificados
   # GET /certificados.json
   def index
+    #@certificados = Certificado.all
     @certificados = Certificado.search({n_certificado:     params[:n_certificado],
                                         n_guia_proveedor:  params[:n_guia_proveedor],
                                         n_codigo_producto: params[:n_codigo_producto],
@@ -16,7 +17,7 @@ class CertificadosController < ApplicationController
                                         sucursal_id:       params[:sucursal_id],
                                         proveedor_id:      params[:proveedor_id]})
     @certificados = @certificados.page(params[:page]).order('fecha_recepcion DESC')
-    #@certificados = Certificado.all
+
     if params[:sucursal_id].nil?
       @sucursal_id = current_user.sucursal.id
     else
@@ -31,6 +32,7 @@ class CertificadosController < ApplicationController
   # GET /certificados/1
   # GET /certificados/1.json
   def show
+    @xhr = request.xhr?
     respond_to do |format|
       format.html { render :layout => !request.xhr? }
       # other formats

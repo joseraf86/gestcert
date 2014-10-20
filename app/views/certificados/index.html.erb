@@ -105,19 +105,16 @@
 </div>
   </div>
 
+<%= link_to '', '#search' %>
 
-
-<div class="panel panel-default">
+<div class="panel panel-default" style="">
   <div class="panel-heading">Resultados</div>
-  <div class="panel-body">
+  <div class="panel-body" style="overflow: hidden">
 
-<table class="table">
+<table class="table" >
   <thead>
     <tr>
       <th>Nro. de Certificado</th>
-      <th>Guia de Proveedor</th>
-      <th>Codigo de Producto</th>
-      <th>Colada</th>
       <th>Orden de compra</th>
       <th>Fecha de recepción</th>
       <th colspan="3"></th>
@@ -128,11 +125,8 @@
     <% @certificados.each_with_index do |certificado, i| %>
       <tr>
         <td><%= certificado.numero_certificado %></td>
-        <td><%= certificado.numero_guia_proveedor %></td>
-        <td><%= certificado.numero_codigo_producto %></td>
-        <td><%= certificado.numero_colada %></td>
         <td><%= certificado.numero_orden_compra %></td>
-        <td><%= certificado.fecha_recepcion %></td>
+        <td><%= certificado.fecha_recepcion.strftime("%d/%m/%Y") %></td>
         <% if current_user.has_role?(:certificados, :show) %>
            <script>
              /*  */
@@ -148,19 +142,10 @@
                     width: 600,
                     title: 'Certificado #<%= certificado.numero_certificado %>'
                 });
-/*
-                $("#button_show_<%= i %>").click(
-                    function () {
-
-                       return false;
-                    }
-                );
-*/
              });
 
              function openDialog<%= i %>()
              {
-
                  $("#dialog_show_<%= i %>").dialog('open');
              }
 
@@ -195,9 +180,9 @@
 
 <div class="apple_pagination">
   <div class="page_info">
-    <%= page_entries_info @certificates %>
+    <%= page_entries_info @certificados %>
   </div>
-  <%= will_paginate @certificates, :container => false %>
+  <%= will_paginate @certificados, :container => false, :params => {:anchor => 'search'} %>
 </div>
 
       </div>

@@ -5,7 +5,11 @@
   <li><%= link_to 'Certificados', certificados_path %></li>
   <li class="active">Crear Certificado</li>
 </ol>
-
-<%= render 'form' %>
+<div class="panel panel-default">
+  <div class="panel-heading">Certificado Nuevo</div>
+  <div class="panel-body">
+    <%= render 'form' %>
+    </div>
+  </div>
 
 <%= link_to 'Volver a Certificados', certificados_path %>

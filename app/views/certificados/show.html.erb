@@ -1,3 +1,11 @@
+<% unless @xhr %>
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li><%= link_to 'Certificados', certificados_path %></li>
+  <li class="active"><%= @certificado.numero_certificado %></li>
+</ol>
+<% end %>
+
 <p>
   <strong>Numero certificado:</strong>
   <%= @certificado.numero_certificado %>
@@ -33,7 +41,12 @@
   <%= @certificado.fecha_recepcion %>
 </p>
 
-<p>
-<%= image_tag @certificado.adjunto.url(:medium) %>
-</p>
+<a href="<%= @certificado.adjunto.url %>" download="<%= @certificado.numero_certificado %>.pdf">Download</a>
 
+<% unless @xhr %>
+  <% if current_user.has_role?(:certificados, :edit) %>
+    <%= link_to 'Editar', edit_certificado_path(@certificado) %> |
+  <% end %>
+
+  <%= link_to 'Volver', certificados_path %>
+<% end %>

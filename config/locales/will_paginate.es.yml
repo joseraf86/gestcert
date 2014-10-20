@@ -1,14 +1,20 @@
 es:
   will_paginate:
+    models:
+      certificado:
+        zero:  certificado
+        one:   certificado
+        few:   certificados
+        other: certificados
     page_entries_info:
       single_page:
-        zero:  "Ningun %{model} encontrado"
+        zero:  "Ningún elemento encontrado"
         one:   "Mostrando 1 %{model}"
-        other: "Mostrando todos los %{count} %{model}"
+        other: "Mostrando %{count} %{model} en total"
       single_page_html:
-        zero:  "Ningún %{model} encontrado"
+        zero:  "Ningún elemento encontrado"
         one:   "Mostrando <b>1</b> %{model}"
-        other: "Mostrando <b>todos los&nbsp;%{count}</b> %{model}"
+        other: "Mostrando&nbsp; <b>%{count}</b> %{model} en total"
 
       multi_page: "Mostrando %{model} %{from} - %{to} de %{count} en total"
       multi_page_html: "Mostrando %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> de <b>%{count}</b> en total"

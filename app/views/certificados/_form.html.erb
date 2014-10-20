@@ -7,40 +7,37 @@
       <div class="form-group">
           <%= f.label :numero_certificado, class:'control-label col-xs-7' %>
           <div class="col-xs-12">
-          <%= f.text_field :numero_certificado, class:'form-control' %>
+          <%= f.text_field :numero_certificado, class:'form-control', maxlength: '20' %>
           </div>
       </div>
 
       <div class="form-group">
         <%= f.label :numero_guia_proveedor, class:'control-label col-xs-7' %>
         <div class="col-xs-12">
-        <%= f.text_field :numero_guia_proveedor, class:'form-control' %>
+        <%= f.text_field :numero_guia_proveedor, class:'form-control', maxlength: '20' %>
         </div>
       </div>
 
 	  <div class="form-group">
 	    <%= f.label :numero_colada, class:'control-label col-xs-7' %>
         <div class="col-xs-12">
-        <%= f.text_field :numero_colada, class:'form-control' %>
+        <%= f.text_field :numero_colada, class:'form-control', maxlength: '20' %>
         </div>
 	  </div>
 
       <div class="form-group">
-        <script type="text/javascript">
-          /*
-          $(function () {
-            $('#fechapicker').datetimepicker({
-              format: 'mm/dd/yyyy',
-              language: 'es'
-              // startDate: '-3d'
+        <script>
+            $(function() {
+                $( "#datepicker" ).datepicker({
+                    format: "dd/mm/yyyy"
+                });
+                $("#datepicker").datepicker("setDate", "<%= Date.today.strftime("%d/%m/%Y")  %>");
             });
-          });
-          */
         </script>
 
         <%= f.label :fecha_recepcion, class:'control-label col-xs-7' %>
         <div id="fechapicker" class="col-xs-12">
-          <%= f.text_field :fecha_recepcion, class:'form-control' %>
+          <%= f.text_field :fecha_recepcion, id: 'datepicker', class:'form-control' %>
         </div>
 
       </div>
@@ -50,7 +47,7 @@
       <div class="form-group">
 	    <%= f.label :numero_orden_compra, class:'control-label col-xs-7' %>
         <div class="col-xs-12">
-	    <%= f.text_field :numero_orden_compra, class:'form-control' %>
+	    <%= f.text_field :numero_orden_compra, class:'form-control', maxlength: '20' %>
         </div>
 	  </div>
 
@@ -83,11 +80,16 @@
       <div class="form-group">
         <%= f.label :numero_codigo_producto, class:'control-label col-xs-7' %><br>
         <div class="col-xs-12">
-          <%= f.text_field :numero_codigo_producto, class:'form-control' %>
+          <%= f.text_field :numero_codigo_producto, class:'form-control', maxlength: '20' %>
         </div>
       </div>
 
+
+
       <div class="form-group">
+        <%= f.label 'Archivo PDF', class:'control-label col-xs-7' %>
+        <b><%= Certificado.find(@certificado.id).adjunto_file_name %></b>
+        <br>
         <div class="col-xs-12">
         <%= f.file_field :adjunto %>
         </div>
