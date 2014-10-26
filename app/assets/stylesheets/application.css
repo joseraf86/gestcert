@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require livevalidation
  *= require bootstrap
  *= require jquery-ui
  *= require_self
@@ -163,3 +164,5 @@ h1
     color: #002a80;
     text-shadow: -1px -1px 1px #FFFFFF, 1px 1px 1px #000000;
 }
+
+
