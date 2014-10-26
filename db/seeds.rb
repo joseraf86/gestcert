@@ -3,8 +3,8 @@ Role.create!([
   {name: "recepcion", title: "Recepcion de Materiales", description: "Rol para el personal que recibe materiales", the_role: "{\"certificados\":{\"index\":true,\"new\":true,\"create\":true,\"show\":true,\"edit\":false,\"delete\":false},\"proveedors\":{\"index\":true,\"show\":true,\"edit\":false,\"delete\":false}}"}
 ])
 User.create!([
-  {name: "elisa", encrypted_password: "$2a$10$B58wrEv3OnqvhSDIElB4MuNL8YWpZlW9vfqcXbNq/FRpAAh2quNnS", remember_created_at: nil, role_id: 2, sucursal_id: 1},
-  {name: "jose", encrypted_password: "$2a$10$3tUrfeWqD8DALeikDeVJIO5JqA3j1IzMrQbvU6A7fpplnN/ENXB/.", remember_created_at: nil, role_id: 1, sucursal_id: 2}
+  {name: "elisa", password: "elisa", password_confirmation: "elisa", remember_created_at: nil, role_id: 2, sucursal_id: 1},
+  {name: "jose", password: "jose", password_confirmation: "jose", remember_created_at: nil, role_id: 1, sucursal_id: 2}
 ])
 Organizacion.create!([
   {nombre: "Hierrobeco, C.A.", rif: "J-007468856"}
