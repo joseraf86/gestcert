@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def access_denied
-    flash[:error] = t('the_role.access_denied')
-    redirect_to(:back)
+    flash[:error] = 'Acceso denegado' #t('the_role.access_denied')
+    request.env['HTTP_REFERER'].nil? ? redirect_to(certificados_path, status: :see_other):redirect_to(:back)
   end
 end

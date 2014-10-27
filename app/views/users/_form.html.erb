@@ -1,5 +1,4 @@
-<%= form_for @user,
-             :html => {:class => 'i_form1 navbar-form navbar-left'} do |f| %>
+<%= form_for @user, :html => {:class => 'i_form1 navbar-form navbar-left', :autocomplete => 'off'} do |f| %>
 
     <% if @user.errors.any? %>
         <div id="error_explanation">
@@ -38,6 +37,17 @@
                                    Role.all,
                                    :id,
                                    :name,
+                                   {:prompt=>true},
+                                   {:class=>'form-control-static'}
+              ) %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :sucursal %><br>
+          <%= f.collection_select( :sucursal_id,
+                                   Sucursal.all,
+                                   :id,
+                                   :nombre,
                                    {:prompt=>true},
                                    {:class=>'form-control-static'}
               ) %>

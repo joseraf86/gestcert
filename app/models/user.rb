@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
             :name,
             :password,
             :password_confirmation,
+            :sucursal_id,
             presence: true
 
 end
