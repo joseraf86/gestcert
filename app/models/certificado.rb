@@ -41,11 +41,18 @@ class Certificado < ActiveRecord::Base
     end
 
     unless search[:start_date].blank?
-      query[:start_date] = {clause: 'fecha_recepcion >= ?', parameter: search[:start_date].to_date}
+      d, m, y = search[:start_date].split /\/|-/
+      if Date.valid_date? y.to_i, m.to_i, d.to_i
+        query[:start_date] = {clause: 'fecha_recepcion >= ?', parameter: search[:start_date].to_date}
+      end
     end
 
     unless search[:end_date].blank?
-      query[:end_date] = {clause: 'fecha_recepcion <= ?', parameter: search[:end_date].to_date + 23.hour + 59.second}
+      d, m, y = search[:start_date].split /\/|-/
+      puts d, m, y
+      if Date.valid_date? y.to_i, m.to_i, d.to_i
+        query[:end_date] = {clause: 'fecha_recepcion <= ?', parameter: search[:end_date].to_date + 23.hour + 59.second}
+      end
     end
 
     unless search[:sucursal_id].blank?
