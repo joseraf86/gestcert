@@ -3,6 +3,8 @@ class Certificado < ActiveRecord::Base
 
   belongs_to :proveedor
   belongs_to :sucursal
+  has_many   :coladas, dependent: :destroy
+  accepts_nested_attributes_for :coladas, :reject_if => lambda { |a| a[:numero].blank? }, :allow_destroy => true
 
   has_attached_file :adjunto,
                     :default_url => "/images/:style/missing.png"
@@ -14,7 +16,6 @@ class Certificado < ActiveRecord::Base
             :numero_certificado,
             :numero_guia_proveedor,
             :numero_codigo_producto,
-            :numero_colada,
             :numero_orden_compra,
             presence: true
 
