@@ -42,12 +42,12 @@ class CertificadosController < ApplicationController
   # GET /certificados/new
   def new
     @certificado = Certificado.new
-    3.times { @certificado.coladas.build }
+    6.times { @certificado.coladas.build }
   end
 
   # GET /certificados/1/edit
   def edit
-    3.times { @certificado.coladas.build }
+    6.times { @certificado.coladas.build }
   end
 
   # POST /certificados
@@ -60,7 +60,7 @@ class CertificadosController < ApplicationController
         format.html { redirect_to @certificado, notice: 'El certificado fue creado exitosamente.' }
         format.json { render :show, status: :created, location: @certificado }
       else
-        3.times { @certificado.coladas.build }
+        6.times { @certificado.coladas.build }
         format.html { render :new }
         format.json { render json: @certificado.errors, status: :unprocessable_entity }
       end
