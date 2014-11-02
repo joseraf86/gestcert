@@ -8,24 +8,22 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Hierrobeco C. A.</a>
-      <ul class="hmenu">
-         <%= render 'devise/menu/login_items' %>
-      </ul>
+      <div class="navbar-brand" style=""><img src="/images/logo.png" /></div>
     </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <div class="" style=""><img src="/images/banner.gif" /></div>
+        <li class="active"><%= render 'devise/menu/login_items' %></li>
+      </ul>
+    </ul>
   </div>
 
 </nav>
 
-<article class="contenido">
+<article class="contenido" style="min-height: 380px">
  <p class="notice"><%= notice %></p>
   <%= yield :role_sidebar %>
   <%= yield :role_main %>
@@ -33,16 +31,20 @@
  <% unless alert.nil? %>
    <div class="alert alert-danger"><%= alert %></div>
  <% end %>
-
+</article>
+<p>Para reportar problemas en el sistema contactar al departamento de computación. Extensión: 228-229.
+</p>
+<footer class="navbar navbar-default" style="padding: 4px">
   <% if user_signed_in? %>
-      <p>
-        Sucursal: <%= current_user.sucursal.nombre %>
-      </p>
-      <div class="well">
-        Para reportar problemas en el sistema contactar al departamento de computación. Extensión: 228-229.
+      <p>Sucursal: <%= current_user.sucursal.nombre %></p>
+
+      <div style="text-align: center">
+          <div style="margin: 0 auto; -webkit-user-select: none; -moz-user-select: none;">
+            © 2014 HIERROBECO C.A. R.I.F No. J-00746885-6 - Todos los derechos reservados
+          </div>
       </div>
   <% end %>
-</article>
+</footer>
 
 </body>
 </html>
