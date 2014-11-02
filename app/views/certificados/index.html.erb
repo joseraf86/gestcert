@@ -84,12 +84,14 @@
                 $( "#finiciopicker" ).datepicker({
                     dateFormat: "dd/mm/yy",
                     monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                    dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá']
+                    dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+                    beforeShowDay: $.datepicker.noWeekends
                 });
                 $( "#ffinpicker" ).datepicker({
                     dateFormat: "dd/mm/yy",
                     monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                    dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá']
+                    dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+                    beforeShowDay: $.datepicker.noWeekends
                 });
             });
 
