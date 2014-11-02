@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :productos
+
   get 'home/index'
 
   devise_for :users
