@@ -8,7 +8,7 @@ class Certificado < ActiveRecord::Base
 
   has_attached_file :adjunto,
                     :default_url => "/images/:style/missing.png"
-  validates_attachment_content_type :adjunto, :content_type => /\Aapplication\/pdf\Z/
+  validates_attachment_content_type :adjunto, :content_type => /(\Aapplication\/pdf\Z)|\Aimage\/jpeg\Z/
 
   validate :fecha_recepcion_is_date?
 
