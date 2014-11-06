@@ -82,6 +82,17 @@
       <br/>
 
       <div class="form-group">
+        <%= f.label :sucursals, 'Sucursales', class:'control-label col-xs-7' %>
+        <div class="col-xs-12">
+          <%= f.collection_select( :sucursal_id,
+                                   Sucursal.all,              :id,
+                                   :nombre,                   {prompt: true},
+                                   {class:'form-control-static'}
+              ) %>
+        </div>
+      </div>
+
+      <div class="form-group">
         <%= f.label :numero_codigo_producto, 'Código de producto', class:'control-label col-xs-9' %><br>
         <div class="col-xs-12">
           <%= f.text_field :numero_codigo_producto, class:'form-control', maxlength: '20' %>

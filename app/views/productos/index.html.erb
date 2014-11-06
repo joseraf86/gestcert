@@ -54,4 +54,6 @@
 
 <br>
 
-<%= link_to 'Nuevo Producto', new_producto_path %>
+<% if current_user.has_role?(:productos, :new) %>
+    <%= link_to 'Nuevo Producto', new_producto_path %>
+<% end %>
