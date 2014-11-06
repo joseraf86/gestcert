@@ -1,6 +1,9 @@
-<h1>Listing sucursals</h1>
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li class="active">Sucursales</li>
+</ol>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Nombre</th>
@@ -16,9 +19,27 @@
         <td><%= sucursal.nombre %></td>
         <td><%= sucursal.organizacion.nombre %></td>
         <td><%= sucursal.direccion %></td>
-        <td><%= link_to 'Show', sucursal %></td>
-        <td><%= link_to 'Edit', edit_sucursal_path(sucursal) %></td>
-        <td><%= link_to 'Destroy', sucursal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.has_role?(:sucursals, :show) %>
+        <td>
+          <%= link_to( sucursal_path(sucursal),
+                       {:class => 'btn btn-small'}) do %>
+              <span class="glyphicon glyphicon-search"></span>
+          <% end %>
+        </td>
+        <% end %>
+        <% if current_user.has_role?(:sucursals, :edit) %>
+          <td><%= link_to( edit_sucursal_path(sucursal),
+                             {:class => 'btn btn-small'}) do %>
+                  <span class="glyphicon glyphicon-edit"></span>
+              <% end %>
+          </td>
+        <% end %>
+        <% if current_user.has_role?(:sucursals, :delete) %>
+            <td><%= link_to sucursal, {method: :delete, data: { confirm: 'Esta seguro de que desea eliminar el sucursal?'}, class: 'btn btn-small'} do %>
+                  <span class="glyphicon glyphicon-remove"></span>
+              <% end %>
+            </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +47,4 @@
 
 <br>
 
-<%= link_to 'New Sucursal', new_sucursal_path %>
+<%= link_to 'Nueva Sucursal', new_sucursal_path %>

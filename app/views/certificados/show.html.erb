@@ -13,7 +13,7 @@
 
 <p>
   <strong>Proveedor:</strong>
-  <%= @certificado.proveedor.name %>
+  <%= @certificado.proveedor.name unless @certificado.proveedor.nil? %>
 </p>
 
 <p>
@@ -27,11 +27,6 @@
 </p>
 
 <p>
-  <strong>Numero colada:</strong>
-  <%= @certificado.numero_colada %>
-</p>
-
-<p>
   <strong>Numero orden compra:</strong>
   <%= @certificado.numero_orden_compra %>
 </p>
@@ -39,6 +34,19 @@
 <p>
   <strong>Fecha de recepción:</strong>
   <%= @certificado.fecha_recepcion %>
+</p>
+
+<p>
+  <strong>Sucursal:</strong>
+  <%= @certificado.sucursal.nombre unless @certificado.sucursal.nil? %>
+</p>
+
+<p>
+  <strong>Número de coladas:</strong>
+  <% @certificado.coladas.each do |c| %>
+    <br/>
+    <%= c.numero %>
+  <% end %>
 </p>
 
 <a href="<%= @certificado.adjunto.url %>" download="<%= @certificado.numero_certificado %>.pdf">Download</a>

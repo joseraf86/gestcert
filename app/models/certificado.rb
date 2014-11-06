@@ -3,18 +3,20 @@ class Certificado < ActiveRecord::Base
 
   belongs_to :proveedor
   belongs_to :sucursal
+  has_many   :coladas, dependent: :destroy
+  accepts_nested_attributes_for :coladas, :reject_if => lambda { |a| a[:numero].blank? }, :allow_destroy => true
 
   has_attached_file :adjunto,
                     :default_url => "/images/:style/missing.png"
-  validates_attachment_content_type :adjunto, :content_type => /\Aapplication\/pdf\Z/
+  validates_attachment_content_type :adjunto, :content_type => /(\Aapplication\/pdf\Z)|\Aimage\/jpeg\Z/
 
   validate :fecha_recepcion_is_date?
 
   validates :proveedor,
+            :sucursal,
             :numero_certificado,
             :numero_guia_proveedor,
             :numero_codigo_producto,
-            :numero_colada,
             :numero_orden_compra,
             presence: true
 
@@ -41,11 +43,18 @@ class Certificado < ActiveRecord::Base
     end
 
     unless search[:start_date].blank?
-      query[:start_date] = {clause: 'fecha_recepcion >= ?', parameter: search[:start_date].to_date}
+      d, m, y = search[:start_date].split /\/|-/
+      if Date.valid_date? y.to_i, m.to_i, d.to_i
+        query[:start_date] = {clause: 'fecha_recepcion >= ?', parameter: search[:start_date].to_date}
+      end
     end
 
     unless search[:end_date].blank?
-      query[:end_date] = {clause: 'fecha_recepcion <= ?', parameter: search[:end_date].to_date + 23.hour + 59.second}
+      d, m, y = search[:start_date].split /\/|-/
+      puts d, m, y
+      if Date.valid_date? y.to_i, m.to_i, d.to_i
+        query[:end_date] = {clause: 'fecha_recepcion <= ?', parameter: search[:end_date].to_date + 23.hour + 59.second}
+      end
     end
 
     unless search[:sucursal_id].blank?
