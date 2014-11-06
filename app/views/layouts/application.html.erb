@@ -24,6 +24,7 @@
 </nav>
 
 <article class="contenido" style="min-height: 380px">
+
  <p class="notice"><%= notice %></p>
   <%= yield :role_sidebar %>
   <%= yield :role_main %>
@@ -32,6 +33,16 @@
    <div class="alert alert-danger"><%= alert %></div>
  <% end %>
 </article>
+
+<nav class="hierrobeco">
+  <ul class="">
+    <li><%= link_to 'Certificados', certificados_path, :class => '' %></li>
+    <li><%= link_to 'Proveedores',  proveedors_path,   :class => '' %></li>
+    <li><%= link_to 'Productos',  productos_path,   :class => '' %></li>
+    <li><%= link_to 'Usuarios',  users_path,   :class => '' %></li>
+  </ul>
+</nav>
+
 <p>Para reportar problemas en el sistema contactar al departamento de computación. Extensión: 228-229.
 </p>
 <footer class="navbar navbar-default" style="padding: 4px">
@@ -39,7 +50,7 @@
       <p>Sucursal: <%= current_user.sucursal.nombre %></p>
 
       <div style="text-align: center">
-          <div style="margin: 0 auto; -webkit-user-select: none; -moz-user-select: none;">
+          <div style="font-size:small; margin: 0 auto; -webkit-user-select: none; -moz-user-select: none;">
             © 2014 HIERROBECO C.A. R.I.F No. J-00746885-6 - Todos los derechos reservados
           </div>
       </div>

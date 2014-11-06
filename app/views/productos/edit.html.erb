@@ -1,6 +1,12 @@
-<h1>Editing producto</h1>
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li><%= link_to 'Productos', productos_path %></li>
+  <li class="active">Editar Producto</li>
+</ol>
+
+<h1>Editar producto</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @producto %> |
-<%= link_to 'Back', productos_path %>
+<%= link_to 'Ver', @producto %> |
+<%= link_to 'Volver', productos_path %>

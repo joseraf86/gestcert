@@ -1,3 +1,9 @@
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li><%= link_to 'Usuarios', users_path %></li>
+  <li class="active"><%= @user.name %></li>
+</ol>
+
 <p>
   <strong>Nombre:</strong>
   <%= @user.name %>
