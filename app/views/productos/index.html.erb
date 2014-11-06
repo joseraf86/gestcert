@@ -26,24 +26,26 @@
       <tr>
         <td><%= producto.codigo %></td>
         <td><%= producto.descripcion %></td>
-        <td>
+        <% if current_user.has_role?(:productos, :show) %>
+          <td>
           <%= link_to( producto_path(producto),
                        {:class => 'btn btn-small'}) do %>
               <span class="glyphicon glyphicon-search"></span>
           <% end %>
-        </td>
+          </td>
+        <% end %>
         <% if current_user.has_role?(:certificados, :edit) %>
-            <td><%= link_to( edit_producto_path(producto),
+          <td><%= link_to( edit_producto_path(producto),
                              {:class => 'btn btn-small'}) do %>
                   <span class="glyphicon glyphicon-edit"></span>
-              <% end %>
-            </td>
+            <% end %>
+          </td>
         <% end %>
         <% if current_user.has_role?(:certificados, :delete) %>
-            <td><%= link_to producto, {method: :delete, data: { confirm: 'Esta seguro de que desea eliminar el producto?'}, class: 'btn btn-small'} do %>
+          <td><%= link_to producto, {method: :delete, data: { confirm: 'Esta seguro de que desea eliminar el producto?'}, class: 'btn btn-small'} do %>
                   <span class="glyphicon glyphicon-remove"></span>
-              <% end %>
-            </td>
+            <% end %>
+          </td>
         <% end %>
       </tr>
     <% end %>

@@ -1,5 +1,9 @@
-<h1>New sucursal</h1>
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li><%= link_to 'Sucursales', sucursals_path %></li>
+  <li class="active">Registrar</li>
+</ol>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', sucursals_path %>
+<%= link_to 'Volver', sucursals_path %>
