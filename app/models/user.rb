@@ -14,11 +14,11 @@ class User < ActiveRecord::Base
   # has_many :pages
 
   validates :password, confirmation: true
-  validates :role_id,
+  validates :role,
             :name,
             :password,
             :password_confirmation,
-            :sucursal_id,
+            :sucursal,
             presence: true
 
 end

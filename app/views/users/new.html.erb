@@ -1,9 +1,10 @@
-<h1>Nuevo Usuario</h1>
-
 <ol class="breadcrumb">
-  <li><a href="#">Inicio</a></li>
-  <li class="active">Usuarios</li>
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li><%= link_to 'Usuarios', users_path %></li>
+  <li class="active">Registrar Usario</li>
 </ol>
+
+<h1>Nuevo Usuario</h1>
 
 <%= render 'form' %>
 

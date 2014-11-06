@@ -24,3 +24,9 @@
 
 # Ignore gedit temp files
 *~
+
+# Ignore when switching DBMS 
+#/config/secrets.yml
+#/config/database.yml
+#Gemfile
+#Gemfile.lock

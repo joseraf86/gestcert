@@ -1,6 +1,12 @@
-<h1>Editing sucursal</h1>
+<h1>Editar sucursal</h1>
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li><%= link_to 'Sucursales', sucursals_path %></li>
+  <li class="active">Editar Sucursal</li>
+</ol>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @sucursal %> |
-<%= link_to 'Back', sucursals_path %>
+<%= link_to 'Ver', @sucursal %> |
+<%= link_to 'Volver', sucursals_path %>

@@ -6,7 +6,17 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def access_denied
-    flash[:error] = 'Acceso denegado' #t('the_role.access_denied')
-    request.env['HTTP_REFERER'].nil? ? redirect_to(certificados_path, status: :see_other):redirect_to(:back)
+    #flash.alert = t('the_role.access_denied')
+    flash.alert = 'No posee permisos para realizar esta operación'
+    redirect_to home_index_url
+=begin
+    if request.env['HTTP_REFERER'].nil?
+      redirect_to home_index_url
+    else
+      flash.alert = 'No posee permisos para realizar esta operación'
+      #redirect_to :back
+      redirect_to home_index_url
+    end
+=end
   end
 end

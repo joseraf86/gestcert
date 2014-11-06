@@ -1,0 +1,59 @@
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li class="active">Productos</li>
+</ol>
+
+<nav class="navbar navbar-default" role="navigation" style="padding: 10px 5px;">
+  <% if current_user.has_role?(:certificados, :new) %>
+      <%= link_to( new_producto_path, {:class => 'btn btn-default  btn-md'}) do %>
+          <span class="glyphicon glyphicon-plus"></span> Nuevo Producto
+      <% end %>
+  <% end %>
+</nav>
+
+
+<table class="table" >
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @productos.each do |producto| %>
+      <tr>
+        <td><%= producto.codigo %></td>
+        <td><%= producto.descripcion %></td>
+        <% if current_user.has_role?(:productos, :show) %>
+          <td>
+          <%= link_to( producto_path(producto),
+                       {:class => 'btn btn-small'}) do %>
+              <span class="glyphicon glyphicon-search"></span>
+          <% end %>
+          </td>
+        <% end %>
+        <% if current_user.has_role?(:certificados, :edit) %>
+          <td><%= link_to( edit_producto_path(producto),
+                             {:class => 'btn btn-small'}) do %>
+                  <span class="glyphicon glyphicon-edit"></span>
+            <% end %>
+          </td>
+        <% end %>
+        <% if current_user.has_role?(:certificados, :delete) %>
+          <td><%= link_to producto, {method: :delete, data: { confirm: 'Esta seguro de que desea eliminar el producto?'}, class: 'btn btn-small'} do %>
+                  <span class="glyphicon glyphicon-remove"></span>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if current_user.has_role?(:productos, :new) %>
+    <%= link_to 'Nuevo Producto', new_producto_path %>
+<% end %>

@@ -42,10 +42,12 @@ class CertificadosController < ApplicationController
   # GET /certificados/new
   def new
     @certificado = Certificado.new
+    6.times { @certificado.coladas.build }
   end
 
   # GET /certificados/1/edit
   def edit
+    6.times { @certificado.coladas.build }
   end
 
   # POST /certificados
@@ -58,6 +60,7 @@ class CertificadosController < ApplicationController
         format.html { redirect_to @certificado, notice: 'El certificado fue creado exitosamente.' }
         format.json { render :show, status: :created, location: @certificado }
       else
+        6.times { @certificado.coladas.build }
         format.html { render :new }
         format.json { render json: @certificado.errors, status: :unprocessable_entity }
       end
@@ -102,11 +105,11 @@ class CertificadosController < ApplicationController
       params.require(:certificado).permit(:numero_certificado,
                                           :numero_guia_proveedor,
                                           :numero_codigo_producto,
-                                          :numero_colada,
                                           :numero_orden_compra,
                                           :proveedor_id,
                                           :adjunto,
                                           :fecha_recepcion,
-                                          :sucursal_id)
+                                          :sucursal_id,
+                                          coladas_attributes: [:id, :numero, :_destroy])
     end
 end
