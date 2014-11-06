@@ -13,6 +13,7 @@ class Certificado < ActiveRecord::Base
   validate :fecha_recepcion_is_date?
 
   validates :proveedor,
+            :sucursal,
             :numero_certificado,
             :numero_guia_proveedor,
             :numero_codigo_producto,
