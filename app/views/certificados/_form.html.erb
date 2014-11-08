@@ -126,7 +126,13 @@
   </div>
 
   </div>
-  <%= f.submit 'Registrar', class:'btn btn-primary'   %>
+
+  <div style="text-align: right">
+    <div style="margin: 0 auto">
+      <%= f.submit 'Registrar', class:'btn btn-primary'   %>
+    </div>
+  </div>
+
 
     <% if @certificado.errors.any? %>
         <div id="error_explanation">

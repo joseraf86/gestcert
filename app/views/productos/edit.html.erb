@@ -4,9 +4,18 @@
   <li class="active">Editar Producto</li>
 </ol>
 
-<h1>Editar producto</h1>
+<div class="panel panel-primary">
+  <div class="panel-heading" style="font-size: large;">Editar Producto</div>
+  <div class="panel-body">
+    <%= render 'form' %>
+  </div>
+</div>
 
-<%= render 'form' %>
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li><%= link_to 'Volver', productos_path %></li>
+  <% if current_user.has_role?(:productos, :show) %>
+      <li><%= link_to 'Ver', @producto %></li>
+  <% end %>
+</ol>
 
-<%= link_to 'Ver', @producto %> |
-<%= link_to 'Volver', productos_path %>

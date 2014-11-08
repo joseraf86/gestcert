@@ -11,8 +11,11 @@
   <% end %>
 </nav>
 
+<div class="panel panel-primary">
+  <div class="panel-heading" style="font-size: large;">Productos</div>
+  <div class="panel-body">
 
-<table class="table" >
+    <table class="table">
   <thead>
     <tr>
       <th>Codigo</th>
@@ -51,9 +54,5 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<% if current_user.has_role?(:productos, :new) %>
-    <%= link_to 'Nuevo Producto', new_producto_path %>
-<% end %>
+  </div>
+</div>
