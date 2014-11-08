@@ -16,7 +16,7 @@
 /tmp
 
 # Ignore database configuration files
-/config/database.yml
+#/config/database.yml
 /db/schema.rb
 
 # Ignore RubyMine IDE files
@@ -30,4 +30,4 @@ Gemfile
 Gemfile.lock
 config/secrets.yml
 db/gestcert_development.sql
-#config/database.yml
+
