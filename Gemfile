@@ -57,3 +57,9 @@ gem 'will_paginate', '~> 3.0'
 
 # 12 factor design principles for rails apps
 gem 'rails_12factor', group: :production
+
+# Herramientas de desarrollo
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
