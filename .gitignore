@@ -24,3 +24,9 @@
 
 # Ignore gedit temp files
 *~
+
+# Ignore machine-spcefic files
+Gemfile
+Gemfile.lock
+config/secrets.yml
+db/gestcert_development.sql
