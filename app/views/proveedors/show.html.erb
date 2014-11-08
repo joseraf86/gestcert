@@ -1,24 +1,26 @@
-<h1>Proveedor: <%= @proveedor.name %></h1>
-
 <ol class="breadcrumb">
   <li><%= link_to 'Inicio', home_index_path %></li>
   <li><%= link_to 'Proveedores', proveedors_path %></li>
   <li class="active">Ver</li>
 </ol>
 
-<p>
-  <strong>RIF:</strong>
-  <%= @proveedor.rif %>
-</p>
+<div class="panel panel-primary">
+  <div class="panel-heading" style="font-size: large;">Proveedor: <%= @proveedor.name %></div>
+  <div class="panel-body">
 
-<p>
-  <strong>Nacional:</strong>
+  <p><strong>RIF:</strong>
+     <%= @proveedor.rif %>
+  </p>
+
+  <p><strong>Nacional:</strong>
   <% if @proveedor.nacional %>
     Si
   <% else %>
     No
   <% end %>
-</p>
+  </p>
+</div>
+  </div>
 
 <% if current_user.has_role?(:proveedors, :edit) %>
     <%= link_to 'Editar Proveedor', edit_proveedor_path(@proveedor) %> |

@@ -4,8 +4,15 @@
   <li class="active">Editar Usuario</li>
 </ol>
 
-<%= render 'form' %>
+<div class="panel panel-primary">
+  <div class="panel-heading" style="font-size: large;">Edita Usuario</div>
+  <div class="panel-body">
+    <%= render 'form' %>
+  </div>
+</div>
 
-<br/>
-<%= link_to 'Ver', @user %> |
-<%= link_to 'Volver', users_path %>
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li><%= link_to 'Volver', users_path %></li>
+</ol>
+

@@ -6,6 +6,10 @@
 
 <p id="notice"><%= notice %></p>
 
+<div class="panel panel-primary">
+  <div class="panel-heading" style="font-size: large;">Producto</div>
+  <div class="panel-body">
+
 <p>
   <strong>Codigo:</strong>
   <%= @producto.codigo %>
@@ -16,5 +20,13 @@
   <%= @producto.descripcion %>
 </p>
 
-<%= link_to 'Editar', edit_producto_path(@producto) %> |
-<%= link_to 'Volver', productos_path %>
+    </div>
+  </div>
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li><%= link_to 'Volver', productos_path %></li>
+  <li><% if current_user.has_role?(:productos, :edit) %>
+        <%= link_to 'Editar', edit_producto_path(@producto) %>
+    <% end %></li>
+</ol>

@@ -3,7 +3,20 @@
   <li class="active">Proveedores</li>
 </ol>
 
-<table class="table">
+<nav class="navbar navbar-default" role="navigation" style="padding: 10px 5px;">
+  <% if current_user.has_role?(:proveedors, :new) %>
+      <%= link_to(new_proveedor_path,
+                  {:class => 'btn btn-default  btn-md'}) do %>
+          <span class="glyphicon glyphicon-plus"></span> Nuevo Proveedor
+      <% end %>
+  <% end %>
+</nav>
+
+<div class="panel panel-primary">
+  <div class="panel-heading" style="font-size: large;">Proveedores</div>
+  <div class="panel-body">
+
+  <table class="table">
   <thead>
   <tr>
     <th>Nombre</th>
@@ -47,10 +60,7 @@
       </tr>
   <% end %>
   </tbody>
-</table>
+  </table>
 
-<br>
-
-<% if current_user.has_role?(:proveedors, :new) %>
-    <%= link_to 'Nuevo Proveedor', new_proveedor_path %>
-<% end %>
+</div>
+</div>

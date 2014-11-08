@@ -15,10 +15,6 @@
 /log/*.log
 /tmp
 
-# Ignore database configuration files
-#/config/database.yml
-/db/schema.rb
-
 # Ignore RubyMine IDE files
 /.idea/*
 
@@ -26,8 +22,10 @@
 *~
 
 # Ignore machine-spcefic files
-Gemfile
-Gemfile.lock
-config/secrets.yml
-db/gestcert_development.sql
+#Gemfile
+#Gemfile.lock
+#config/secrets.yml
+#db/gestcert_development.sql
+#/config/secrets.yml
+#/config/database.yml
 

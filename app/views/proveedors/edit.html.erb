@@ -1,13 +1,22 @@
-<h1>Editar Proveedor</h1>
-
 <ol class="breadcrumb">
   <li><%= link_to 'Inicio', certificados_path %></li>
   <li><%= link_to 'Proveedores', proveedors_path %></li>
   <li class="active">Editar</li>
 </ol>
 
-<%= render 'form' %>
+<div class="panel panel-primary">
+  <div class="panel-heading" style="font-size: large;">Editar Proveedor</div>
+  <div class="panel-body">
+    <%= render 'form' %>
+  </div>
+</div>
 
-<%= link_to 'Ver', @proveedor %> |
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li><%= link_to 'Volver', proveedors_path %></li>
+  <% if current_user.has_role?(:proveedors, :show) %>
+      <li><%= link_to 'Ver', @proveedor %></li>
+  <% end %>
+</ol>
 
 

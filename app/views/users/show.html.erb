@@ -4,15 +4,19 @@
   <li class="active"><%= @user.name %></li>
 </ol>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @user.name %>
-</p>
+<div class="panel panel-primary">
+  <div class="panel-heading" style="font-size: large;">Usuario <%= @user.name %></div>
+  <div class="panel-body">
+    <p>
+      <strong>Nombre:</strong>
+      <%= @user.name %>
+    </p>
 
-<p>
-  <strong>rol:</strong>
-  <%= @user.role.name %>
-</p>
-
+    <p>
+      <strong>rol:</strong>
+      <%= @user.role.name %>
+    </p>
+</div>
+  </div>
 <%= link_to 'Editar User', edit_user_path(@user) %> |
 <%= link_to 'Volver', users_path %>

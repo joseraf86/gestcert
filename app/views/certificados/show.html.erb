@@ -6,55 +6,56 @@
 </ol>
 <% end %>
 
-<p>
-  <strong>Numero certificado:</strong>
-  <%= @certificado.numero_certificado %>
-</p>
+<div class="panel panel-primary">
+  <div class="panel-heading" style="font-size: large;">Certificado</div>
+  <div class="panel-body">
 
-<p>
-  <strong>Proveedor:</strong>
-  <%= @certificado.proveedor.name unless @certificado.proveedor.nil? %>
-</p>
 
-<p>
-  <strong>Numero guia proveedor:</strong>
-  <%= @certificado.numero_guia_proveedor %>
-</p>
+  <p><strong>Numero certificado:</strong>
+    <%= @certificado.numero_certificado %>
+   </p>
 
-<p>
-  <strong>Numero codigo producto:</strong>
-  <%= @certificado.numero_codigo_producto %>
-</p>
+  <p><strong>Proveedor:</strong>
+    <%= @certificado.proveedor.name unless @certificado.proveedor.nil? %>
+  </p>
 
-<p>
-  <strong>Numero orden compra:</strong>
-  <%= @certificado.numero_orden_compra %>
-</p>
+  <p><strong>Numero guia proveedor:</strong>
+    <%= @certificado.numero_guia_proveedor %>
+  </p>
 
-<p>
-  <strong>Fecha de recepción:</strong>
-  <%= @certificado.fecha_recepcion %>
-</p>
+  <p><strong>Numero codigo producto:</strong>
+    <%= @certificado.numero_codigo_producto %>
+  </p>
 
-<p>
-  <strong>Sucursal:</strong>
-  <%= @certificado.sucursal.nombre unless @certificado.sucursal.nil? %>
-</p>
+  <p><strong>Numero orden compra:</strong>
+    <%= @certificado.numero_orden_compra %>
+  </p>
 
-<p>
-  <strong>Número de coladas:</strong>
-  <% @certificado.coladas.each do |c| %>
-    <br/>
-    <%= c.numero %>
-  <% end %>
-</p>
+  <p><strong>Fecha de recepción:</strong>
+    <%= @certificado.fecha_recepcion %>
+  </p>
 
-<a href="<%= @certificado.adjunto.url %>" download="<%= @certificado.numero_certificado %>.pdf">Download</a>
+  <p><strong>Sucursal:</strong>
+    <%= @certificado.sucursal.nombre unless @certificado.sucursal.nil? %>
+  </p>
+
+  <p><strong>Número de coladas:</strong>
+    <% @certificado.coladas.each do |c| %><br/>
+      <%= c.numero %>
+    <% end %>
+  </p>
+
+  <a href="<%= @certificado.adjunto.url %>" download="<%= @certificado.numero_certificado %>.pdf">Download</a>
+
+  </div>
+</div>
 
 <% unless @xhr %>
-  <% if current_user.has_role?(:certificados, :edit) %>
-    <%= link_to 'Editar', edit_certificado_path(@certificado) %> |
-  <% end %>
-
-  <%= link_to 'Volver', certificados_path %>
+    <ol class="breadcrumb">
+      <li><%= link_to 'Inicio', home_index_path %></li>
+      <li><%= link_to 'Volver', certificados_path %></li>
+      <li><% if current_user.has_role?(:certificados, :edit) %>
+            <%= link_to 'Editar', edit_certificado_path(@certificado) %>
+        <% end %></li>
+    </ol>
 <% end %>
