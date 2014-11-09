@@ -6,20 +6,30 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @sucursal.nombre %>
-</p>
+<div class="panel panel-primary">
+  <div class="panel-heading" style="font-size: large;">Sucursal</div>
+  <div class="panel-body">
 
-<p>
-  <strong>Organizacion:</strong>
-  <%= @sucursal.organizacion.nombre %>
-</p>
+    <p>
+      <strong>Nombre:</strong>
+      <%= @sucursal.nombre %>
+    </p>
 
-<p>
-  <strong>Direccion:</strong>
-  <%= @sucursal.direccion %>
-</p>
+    <p>
+      <strong>Organizacion:</strong>
+      <%= @sucursal.organizacion.nombre %>
+    </p>
 
-<%= link_to 'Editar', edit_sucursal_path(@sucursal) %> |
-<%= link_to 'Volver', sucursals_path %>
+    <p>
+      <strong>Direccion:</strong>
+      <%= @sucursal.direccion %>
+    </p>
+
+  </div>
+</div>
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li><%= link_to 'Volver', sucursals_path %></li>
+  <li><%= link_to 'Editar', edit_sucursal_path(@sucursal) %></li>
+</ol>

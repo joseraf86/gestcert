@@ -18,5 +18,11 @@
     </p>
 </div>
   </div>
-<%= link_to 'Editar User', edit_user_path(@user) %> |
-<%= link_to 'Volver', users_path %>
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li><%= link_to 'Volver', users_path %></li>
+  <% if current_user.has_role?(:users, :edit) %>
+      <li><%= link_to 'Editar', edit_user_path(@user) %></li>
+  <% end %>
+</ol>

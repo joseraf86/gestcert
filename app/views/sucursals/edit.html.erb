@@ -1,12 +1,20 @@
-<h1>Editar sucursal</h1>
-
 <ol class="breadcrumb">
   <li><%= link_to 'Inicio', home_index_path %></li>
   <li><%= link_to 'Sucursales', sucursals_path %></li>
   <li class="active">Editar Sucursal</li>
 </ol>
 
-<%= render 'form' %>
+<div class="panel panel-primary">
+  <div class="panel-heading" style="font-size: large;">Editar Sucursal</div>
+  <div class="panel-body">
+    <%= render 'form' %>
+  </div>
+</div>
 
-<%= link_to 'Ver', @sucursal %> |
-<%= link_to 'Volver', sucursals_path %>
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li><%= link_to 'Volver', sucursals_path %></li>
+  <% if current_user.has_role?(:sucursals, :show) %>
+      <li><%= link_to 'Ver', @sucursal %></li>
+  <% end %>
+</ol>

@@ -4,6 +4,14 @@
   <li class="active">Registrar</li>
 </ol>
 
-<%= render 'form' %>
+<div class="panel panel-primary">
+  <div class="panel-heading" style="font-size: large;">Nuevo Sucursal</div>
+  <div class="panel-body">
+    <%= render 'form' %>
+  </div>
+</div>
 
-<%= link_to 'Volver', sucursals_path %>
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li><%= link_to 'Volver', sucursals_path %></li>
+</ol>

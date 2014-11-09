@@ -22,9 +22,13 @@
 </div>
   </div>
 
-<% if current_user.has_role?(:proveedors, :edit) %>
-    <%= link_to 'Editar Proveedor', edit_proveedor_path(@proveedor) %> |
-<% end %>
 
-<%= link_to 'Volver', proveedors_path %>
 
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+  <li><%= link_to 'Volver', proveedors_path %></li>
+  <% if current_user.has_role?(:proveedors, :edit) %>
+    <li><%= link_to 'Editar', edit_proveedor_path(@proveedor) %></li>
+  <% end %>
+</ol>

@@ -3,7 +3,21 @@
   <li class="active">Sucursales</li>
 </ol>
 
-<table class="table">
+<nav class="navbar navbar-default" role="navigation" style="padding: 10px 5px;">
+  <% if current_user.has_role?(:sucursals, :new) %>
+      <%= link_to(
+              new_sucursal_path,
+              {:class => 'btn btn-default  btn-md'}) do %>
+          <span class="glyphicon glyphicon-plus"></span> Nueva Sucursal
+      <% end %>
+  <% end %>
+</nav>
+
+<div class="panel panel-primary" >
+  <div class="panel-heading" style="font-size: large">Sucursales</div>
+  <div class="panel-body" style="overflow: hidden">
+
+  <table class="table" >
   <thead>
     <tr>
       <th>Nombre</th>
@@ -44,7 +58,11 @@
     <% end %>
   </tbody>
 </table>
+    </div>
+  </div>
 
-<br>
 
-<%= link_to 'Nueva Sucursal', new_sucursal_path %>
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Inicio', home_index_path %></li>
+</ol>

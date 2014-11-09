@@ -1,4 +1,5 @@
 <%= form_for(@sucursal) do |f| %>
+
   <% if @sucursal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@sucursal.errors.count, "error") %> prohibited this sucursal from being saved:</h2>
@@ -13,17 +14,29 @@
 
   <div class="field">
     <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
+    <%= f.text_field :nombre, class:'form-control' %>
   </div>
+
   <div class="field">
     <%= f.label :organizacion_id %><br>
-    <%= f.text_field :organizacion_id %>
+    <div class="col-xs-12">
+      <%= f.collection_select( :organizacion_id,
+                   Organizacion.all,       :id,
+                   :nombre,                {prompt: true},
+                   {class:'form-control-static'}
+          ) %>
+    </div>
   </div>
+
   <div class="field">
     <%= f.label :direccion %><br>
-    <%= f.text_area :direccion %>
+    <%= f.text_area :direccion, class:'form-control' %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div style="text-align: right">
+    <div style="margin: 0 auto">
+      <%= f.submit 'Registrar', class:'btn btn-primary'   %>
+    </div>
   </div>
+
 <% end %>
