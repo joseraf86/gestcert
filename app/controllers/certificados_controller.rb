@@ -2,6 +2,7 @@ class CertificadosController < ApplicationController
   before_action :set_certificado, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!#, except: [:index, :show]
   before_action :role_required#,  except: [:index, :show]
+  before_action :validacion_sucursal, only: [:edit, :update, :destroy]
 
   # GET /certificados
   # GET /certificados.json
@@ -86,15 +87,22 @@ class CertificadosController < ApplicationController
   def destroy
     @certificado.destroy
     respond_to do |format|
-      format.html { 
-           redirect_to certificados_url, 
-           notice: 'El certificado fue eliminado exitosamente.'
-      }
+      format.html { redirect_to certificados_url,
+                    notice: 'El certificado fue eliminado exitosamente.'}
       format.json { head :no_content }
     end
   end
 
   private
+
+    # Impedir a los usuarios con rol deposito editar y eliminar certificados de otra sucursal.
+    def validacion_sucursal
+      if @certificado.pertence_a_otra_sucursal?(current_user)
+        redirect_to root_url, alert: 'No posees permisos para realizar esta operación porque el certificado no pertenece a tu sucursal'
+        return
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_certificado
       @certificado = Certificado.find(params[:id])

@@ -43,7 +43,7 @@
         <li><%= link_to 'Proveedores',  proveedors_path %></li>
         <li><%= link_to 'Productos',  productos_path %></li>
         <li><%= link_to 'Sucursales',  sucursals_path %></li>
-        <li><%= link_to 'Usuarios',  users_path %></li>
+        <li><%= link_to 'Usuarios',  users_path if current_user.admin? %></li>
         <!-- <li><%= link_to 'Roles',  admin_roles_path if current_user.admin? %></li> -->
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -78,6 +78,7 @@
 </p>
 <footer class="navbar navbar-default" style="padding: 4px">
   <% if user_signed_in? %>
+      <p>Usuario: <%= current_user.name %></p>
       <p>Sucursal: <%= current_user.sucursal.nombre %></p>
 
       <div style="text-align: center">

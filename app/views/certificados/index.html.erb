@@ -181,19 +181,19 @@
               </a>
           </td>
         <% end %>
-        <% if current_user.has_role?(:certificados, :edit) %>
-          <td><%= link_to( edit_certificado_path(certificado),
+        <td><% if current_user.has_role?(:certificados, :edit) && !certificado.pertence_a_otra_sucursal?(current_user) %>
+          <%= link_to( edit_certificado_path(certificado),
 		    {:class => 'btn btn-small'}) do %>
 		    <span class="glyphicon glyphicon-edit"></span>
 	        <% end %>
-	      </td>
-        <% end %>
-        <% if current_user.sucursal_id == certificado.sucursal_id || current_user.has_role?(:certificados, :delete) %>
-          <td><%= link_to certificado, {method: :delete, data: { confirm: 'Esta seguro de que desea eliminar el certificado?'}, class: 'btn btn-small'} do %>
+
+        <% end %></td>
+        <td><% if current_user.has_role?(:certificados, :destroy) && !certificado.pertence_a_otra_sucursal?(current_user) %>
+          <%= link_to certificado, {method: :delete, data: { confirm: 'Esta seguro de que desea eliminar el certificado?'}, class: 'btn btn-small'} do %>
 	        <span class="glyphicon glyphicon-remove"></span>
             <% end %>
-	      </td>
-        <% end %>
+
+        <% end %></td>
       </tr>
     <% end %>
   </tbody>

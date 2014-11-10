@@ -74,6 +74,10 @@ class Certificado < ActiveRecord::Base
     end
   end
 
+  def pertence_a_otra_sucursal?(current_user)
+    current_user.role.name == 'deposito' && current_user.sucursal != sucursal
+  end
+
   private
 
   def fecha_recepcion_is_date?
