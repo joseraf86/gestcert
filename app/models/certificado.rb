@@ -6,8 +6,10 @@ class Certificado < ActiveRecord::Base
   has_many   :coladas, dependent: :destroy
   accepts_nested_attributes_for :coladas, :reject_if => lambda { |a| a[:numero].blank? }, :allow_destroy => true
 
-  has_attached_file :adjunto,
-                    :default_url => "/images/:style/missing.png"
+  has_attached_file :adjunto, { path: ':rails_root/public/certificados/:filename',
+                                url: ':filename',
+                                use_timestamp: false }
+
   validates_attachment_content_type :adjunto, :content_type => /(\Aapplication\/pdf\Z)|\Aimage\/jpeg\Z/
 
   validate :fecha_recepcion_is_date?
@@ -18,6 +20,7 @@ class Certificado < ActiveRecord::Base
             :numero_guia_proveedor,
             :numero_codigo_producto,
             :numero_orden_compra,
+            :adjunto,
             presence: true
 
   def self.search(search)
@@ -78,6 +81,13 @@ class Certificado < ActiveRecord::Base
     current_user.role.name == 'deposito' && current_user.sucursal != sucursal
   end
 
+  def formato
+    if adjunto_content_type == 'application/pdf'
+      'pdf'
+    elsif adjunto_content_type == 'image/jpg'
+      'jpg'
+    end
+  end
   private
 
   def fecha_recepcion_is_date?
