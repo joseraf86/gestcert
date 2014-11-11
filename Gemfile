@@ -57,6 +57,9 @@ gem 'seed_dump'
 # Paginacion
 gem 'will_paginate', '~> 3.0'
 
+# Visor pdf
+gem 'pdfjs_rails'
+
 # Herramientas de desarrollo
 group :development do
   gem 'better_errors'

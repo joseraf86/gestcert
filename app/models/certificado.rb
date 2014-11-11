@@ -88,6 +88,11 @@ class Certificado < ActiveRecord::Base
       'jpg'
     end
   end
+
+  def es_pdf?
+    adjunto_content_type == 'application/pdf'
+  end
+
   private
 
   def fecha_recepcion_is_date?
