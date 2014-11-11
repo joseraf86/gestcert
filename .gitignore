@@ -16,7 +16,7 @@
 /tmp
 
 # Ignore RubyMine IDE files
-/.idea/*
+/.idea
 
 # Ignore gedit temp files
 *~
@@ -28,4 +28,5 @@
 
 /db/gestcert_development.sql
 /respaldos
-/public/system/*
+/public/system
+/public/certificados
