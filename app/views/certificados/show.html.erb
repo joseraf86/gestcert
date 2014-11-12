@@ -10,9 +10,13 @@
   <div class="panel-heading" style="font-size: large;">Certificado</div>
   <div class="panel-body">
 
+   <p>Vista previa</p>
    <% if @certificado.es_pdf? %>
      <iframe src="/pdfjs/web/viewer.html?file=/certificados/<%="#{@certificado.adjunto}" %>" style="border: 0" width="50%" height="600" frameborder="0" scrolling="no"></iframe>
+   <% elsif @certificado.es_jpg? %>
+     <img src="/certificados/<%=@certificado.adjunto%>" width="20%" height="20%">
    <% end %>
+
   <p><strong>Numero certificado:</strong>
     <%= @certificado.numero_certificado %>
    </p>

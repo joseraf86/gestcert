@@ -16,12 +16,17 @@ class Certificado < ActiveRecord::Base
 
   validates :proveedor,
             :sucursal,
-            :numero_certificado,
-            :numero_guia_proveedor,
-            :numero_codigo_producto,
-            :numero_orden_compra,
             :adjunto,
             presence: true
+
+  ALPHANUMERIC_REGEX = /\A[-a-zA-Z0-9]+\z/
+  validates :numero_certificado,
+            :numero_guia_proveedor,
+            :numero_codigo_producto,
+            format: { with: ALPHANUMERIC_REGEX }
+
+  NUMERIC_REGEX = /\A[0-9]+\z/
+  validates :numero_orden_compra, format: { with: NUMERIC_REGEX }
 
   def self.search(search)
     query = {}
@@ -86,11 +91,17 @@ class Certificado < ActiveRecord::Base
       'pdf'
     elsif adjunto_content_type == 'image/jpg'
       'jpg'
+    else
+      nil
     end
   end
 
   def es_pdf?
     adjunto_content_type == 'application/pdf'
+  end
+
+  def es_jpg?
+    adjunto_content_type == 'image/jpg' || adjunto_content_type == 'image/jpeg'
   end
 
   private
