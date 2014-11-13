@@ -76,6 +76,7 @@ class CertificadosController < ApplicationController
         format.html { redirect_to @certificado, notice: 'El certificado fue actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @certificado }
       else
+        6.times { @certificado.coladas.build }
         format.html { render :edit }
         format.json { render json: @certificado.errors, status: :unprocessable_entity }
       end

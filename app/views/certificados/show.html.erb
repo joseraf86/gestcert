@@ -52,7 +52,7 @@
   </p>
 
   <% unless @certificado.adjunto.nil? %>
-    <a href="<%= @certificado.adjunto.url %>" download="<%="#{@certificado.numero_certificado}.#{@certificado.formato}" %>">Descargar certificado</a>
+    <a href="<%= @certificado.adjunto.url %>" download="<%="/certificados/#{@certificado.numero_certificado}.#{@certificado.formato}" %>">Descargar certificado</a>
   <% end %>
   </div>
 </div>
