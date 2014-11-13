@@ -10,16 +10,26 @@
   <div class="panel-heading" style="font-size: large;">Certificado</div>
   <div class="panel-body">
 
-   <p>Vista previa</p>
-   <% if @certificado.es_pdf? %>
-     <iframe src="/pdfjs/web/viewer.html?file=/certificados/<%="#{@certificado.adjunto}" %>" style="border: 0" width="50%" height="600" frameborder="0" scrolling="no"></iframe>
-   <% elsif @certificado.es_jpg? %>
-     <img src="/certificados/<%=@certificado.adjunto%>" width="20%" height="20%">
-   <% end %>
+  <% unless @xhr %>
+    <p>Vista previa</p>
+    <% if @certificado.es_pdf? %>
+      <iframe src="/pdfjs/web/viewer.html?file=/certificados/<%="#{@certificado.adjunto}" %>" style="border: 0" width="50%" height="600" frameborder="0" scrolling="no"></iframe>
+    <% elsif @certificado.es_jpg? %>
+      <img src="/certificados/<%=@certificado.adjunto%>" width="20%" height="20%">
+    <% end %>
+  <% end %>
+
+    <p><strong>id de base de datos:</strong>
+      <%= @certificado.id %>
+    </p>
+
+  <p><strong>Identificador de sistema:</strong>
+    <%= @certificado.system_id %>
+  </p>
 
   <p><strong>Numero certificado:</strong>
     <%= @certificado.numero_certificado %>
-   </p>
+  </p>
 
   <p><strong>Proveedor:</strong>
     <%= @certificado.proveedor.name unless @certificado.proveedor.nil? %>
@@ -52,7 +62,7 @@
   </p>
 
   <% unless @certificado.adjunto.nil? %>
-    <a href="<%= @certificado.adjunto.url %>" download="<%="/certificados/#{@certificado.numero_certificado}.#{@certificado.formato}" %>">Descargar certificado</a>
+    <a href="<%= @certificado.adjunto.url %>" download="<%="#{@certificado.system_id}.#{@certificado.formato}" %>">Descargar certificado</a>
   <% end %>
   </div>
 </div>

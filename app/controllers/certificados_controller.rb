@@ -55,6 +55,7 @@ class CertificadosController < ApplicationController
   # POST /certificados.json
   def create
     @certificado = Certificado.new(certificado_params)
+    @certificado.system_id = Time.now.strftime '%Y%m%d%H%M%S'
 
     respond_to do |format|
       if @certificado.save

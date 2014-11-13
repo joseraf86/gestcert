@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141102152702) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20141113043836) do
 
   create_table "certificados", force: true do |t|
     t.string   "numero_certificado"
@@ -30,6 +27,7 @@ ActiveRecord::Schema.define(version: 20141102152702) do
     t.datetime "adjunto_updated_at"
     t.date     "fecha_recepcion"
     t.integer  "sucursal_id"
+    t.string   "system_id"
   end
 
   add_index "certificados", ["proveedor_id"], name: "index_certificados_on_proveedor_id", using: :btree

@@ -6,7 +6,7 @@ class ProductosController < ApplicationController
   # GET /productos
   # GET /productos.json
   def index
-    @productos = Producto.all
+    @productos = Producto.all.page(params[:page]).order('updated_at DESC')
   end
 
   # GET /productos/1

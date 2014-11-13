@@ -6,7 +6,7 @@ class ProveedorsController < ApplicationController
   # GET /proveedors
   # GET /proveedors.json
   def index
-    @proveedors = Proveedor.all
+    @proveedors = Proveedor.all.page(params[:page]).order('name')
   end
 
   # GET /proveedors/1

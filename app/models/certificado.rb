@@ -1,5 +1,5 @@
 class Certificado < ActiveRecord::Base
-  self.per_page = 5
+  self.per_page = 15
 
   belongs_to :proveedor
   belongs_to :sucursal
@@ -19,6 +19,8 @@ class Certificado < ActiveRecord::Base
             :adjunto,
             presence: true
 
+  validates :system_id, uniqueness: true
+
   ALPHANUMERIC_REGEX = /\A[-a-zA-Z0-9]+\z/
   validates :numero_certificado,
             :numero_guia_proveedor,
@@ -27,6 +29,12 @@ class Certificado < ActiveRecord::Base
 
   NUMERIC_REGEX = /\A[0-9]+\z/
   validates :numero_orden_compra, format: { with: NUMERIC_REGEX }
+
+  validates :numero_certificado,
+            :numero_guia_proveedor,
+            :numero_codigo_producto,
+            :numero_orden_compra,
+            length: { maximum: 20 }
 
   def self.search(search)
     query = {}
@@ -43,7 +51,7 @@ class Certificado < ActiveRecord::Base
     end
 
     unless search[:n_colada].blank?
-      query[:n_colada] = {clause: 'numero_colada LIKE ?', parameter: search[:n_colada]}
+      query[:n_colada] = {clause: 'coladas.numero LIKE ?', parameter: search[:n_colada]}
     end
 
     unless search[:n_orden_compra].blank?
@@ -78,7 +86,7 @@ class Certificado < ActiveRecord::Base
     if query.empty?
       all
     else
-      where(query.collect {|key, value| value[:clause]}.join(' AND '), *conditions)
+      joins(:coladas).where(query.collect {|key, value| value[:clause]}.join(' AND '), *conditions)
     end
   end
 

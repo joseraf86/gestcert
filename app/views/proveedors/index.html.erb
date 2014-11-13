@@ -62,6 +62,13 @@
   </tbody>
   </table>
 
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @proveedors %>
+  </div>
+  <%= will_paginate @proveedors, container: false %>
+
+</div>
 </div>
 </div>
 
