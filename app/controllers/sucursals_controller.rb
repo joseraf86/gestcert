@@ -6,7 +6,7 @@ class SucursalsController < ApplicationController
   # GET /sucursals
   # GET /sucursals.json
   def index
-    @sucursals = Sucursal.all
+    @sucursals = Sucursal.all.order('created_at DESC')
   end
 
   # GET /sucursals/1

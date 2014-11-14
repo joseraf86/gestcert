@@ -13,7 +13,9 @@ class User < ActiveRecord::Base
   # has_role
   # has_many :pages
 
-  validates :password, confirmation: true
+  validates :password,
+            confirmation: true
+
   validates :role,
             :name,
             :password,
