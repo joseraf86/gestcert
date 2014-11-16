@@ -13,21 +13,21 @@
   <% unless @xhr %>
     <p>Vista previa</p>
     <% if @certificado.es_pdf? %>
-      <iframe src="/pdfjs/web/viewer.html?file=/certificados/<%="#{@certificado.adjunto}" %>" style="border: 0" width="50%" height="600" frameborder="0" scrolling="no"></iframe>
+      <iframe src="/pdfjs/web/viewer.html?file=<%="#{@certificado.adjunto.url}" %>" style="border: 0" width="50%" height="600" frameborder="0" scrolling="no"></iframe>
     <% elsif @certificado.es_jpg? %>
-      <img src="/certificados/<%=@certificado.adjunto%>" width="20%" height="20%">
+      <img src="<%="#{@certificado.adjunto.url}" %>" width="20%" height="20%">
     <% end %>
   <% end %>
 
-    <p><strong>id de base de datos:</strong>
-      <%= @certificado.id %>
-    </p>
+  <p><strong>id de base de datos:</strong>
+    <%= @certificado.id %>
+  </p>
 
   <p><strong>Identificador de sistema:</strong>
     <%= @certificado.system_id %>
   </p>
 
-  <p><strong>Numero certificado:</strong>
+  <p><strong>Número certificado:</strong>
     <%= @certificado.numero_certificado %>
   </p>
 
@@ -35,15 +35,15 @@
     <%= @certificado.proveedor.name unless @certificado.proveedor.nil? %>
   </p>
 
-  <p><strong>Numero guia proveedor:</strong>
+  <p><strong>Número de guía de proveedor:</strong>
     <%= @certificado.numero_guia_proveedor %>
   </p>
 
-  <p><strong>Numero codigo producto:</strong>
+  <p><strong>Número de código de producto:</strong>
     <%= @certificado.numero_codigo_producto %>
   </p>
 
-  <p><strong>Numero orden compra:</strong>
+  <p><strong>Número de orden de compra:</strong>
     <%= @certificado.numero_orden_compra %>
   </p>
 
@@ -55,14 +55,14 @@
     <%= @certificado.sucursal.nombre unless @certificado.sucursal.nil? %>
   </p>
 
-  <p><strong>Número de coladas:</strong>
+  <p><strong>Números de coladas:</strong>
     <% @certificado.coladas.each do |c| %><br/>
       <%= c.numero %>
     <% end %>
   </p>
 
   <% unless @certificado.adjunto.nil? %>
-    <a href="<%= @certificado.adjunto.url %>" download="<%="#{@certificado.system_id}.#{@certificado.formato}" %>">Descargar certificado</a>
+    <a href="<%= @certificado.adjunto.url %>" download="<%="#{@certificado.adjunto_nombre}" %>">Descargar certificado</a>
   <% end %>
   </div>
 </div>

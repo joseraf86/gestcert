@@ -96,7 +96,7 @@
 
       <div class="form-group">
         <%= f.label 'adjunto', 'Archivo adjunto (formato .pdf o .jpg)', class:'control-label col-xs-12' %>
-        <b><%= Certificado.find(@certificado.id).adjunto_file_name unless @certificado.new_record? %></b>
+        <b><%= "#{@certificado.adjunto_nombre}" unless @certificado.new_record? %></b>
         <br>
         <div class="col-xs-12">
           <%= f.file_field :adjunto %>
@@ -126,7 +126,7 @@
     <% if @certificado.errors.any? %>
         <div id="error_explanation">
           <% if @certificado.errors.count > 1 %>
-            <h2>Ocurrieron <%= pluralize(@certificado.errors.count, "errores") %> mientras se guardaba el certificado: </h2>
+            <h2>Ocurrieron <%= pluralize(@certificado.errors.count, 'errores') %> mientras se guardaba el certificado: </h2>
 
             <ul>
               <% @certificado.errors.full_messages.each do |message| %>
@@ -134,7 +134,7 @@
               <% end %>
             </ul>
            <% else %>
-              <h2>Ocurrió <%= pluralize(@certificado.errors.count, "error") %> mientras se guardaba el certificado: </h2>
+              <h2>Ocurrió <%= pluralize(@certificado.errors.count, 'error') %> mientras se guardaba el certificado: </h2>
 
               <ul>
                 <% @certificado.errors.full_messages.each do |message| %>
