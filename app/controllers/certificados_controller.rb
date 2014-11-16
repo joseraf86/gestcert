@@ -56,6 +56,7 @@ class CertificadosController < ApplicationController
   def create
     @certificado = Certificado.new(certificado_params)
     @certificado.system_id = Time.now.strftime '%Y%m%d%H%M%S'
+    obtener_coleccion_coladas
 
     respond_to do |format|
       if @certificado.save
@@ -72,6 +73,7 @@ class CertificadosController < ApplicationController
   # PATCH/PUT /certificados/1
   # PATCH/PUT /certificados/1.json
   def update
+    obtener_coleccion_coladas
     respond_to do |format|
       if @certificado.update(certificado_params)
         format.html { redirect_to @certificado, notice: 'El certificado fue actualizado exitosamente.' }
@@ -121,5 +123,9 @@ class CertificadosController < ApplicationController
                                           :fecha_recepcion,
                                           :sucursal_id,
                                           coladas_attributes: [:id, :numero, :_destroy])
+    end
+
+    def obtener_coleccion_coladas
+      @certificado.coleccion_coladas = params['certificado']['coladas_attributes'].collect {|k, v| v['numero']}.reject! { |c| c.empty? }
     end
 end

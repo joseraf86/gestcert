@@ -1,13 +1,21 @@
 class Certificado < ActiveRecord::Base
   self.per_page = 15
 
+  attr_accessor :coleccion_coladas
+
+  scope :viejo, -> { where( 'fecha_recepcion <= ?', Date.today - 1.year) }
+
   belongs_to :proveedor
   belongs_to :sucursal
-  has_many   :coladas, dependent: :destroy
-  accepts_nested_attributes_for :coladas, :reject_if => lambda { |a| a[:numero].blank? }, :allow_destroy => true
+  has_many   :coladas, inverse_of: :certificado, dependent: :destroy
+  accepts_nested_attributes_for :coladas, reject_if: lambda { |a| a[:numero].blank? }, allow_destroy: true
+  #validates_associated :coladas
 
-  has_attached_file :adjunto, { path: ':rails_root/public/certificados/:filename',
-                                url: ':filename',
+  DIRECTORIO_CERTIFICADOS_SYSTEM = ':rails_root/public/certificados'
+  DIR_CERTIFICADOS = '/certificados'
+
+  has_attached_file :adjunto, { path: "#{DIRECTORIO_CERTIFICADOS_SYSTEM}/:sucursal/:system_id.:extension",
+                                url: "#{DIR_CERTIFICADOS}/:sucursal/:system_id.:extension",
                                 use_timestamp: false }
 
   validates_attachment_content_type :adjunto, :content_type => /(\Aapplication\/pdf\Z)|\Aimage\/jpeg\Z/
@@ -35,6 +43,14 @@ class Certificado < ActiveRecord::Base
             :numero_codigo_producto,
             :numero_orden_compra,
             length: { maximum: 20 }
+
+  validate :coleccion_coladas_unicas
+
+  def coleccion_coladas_unicas
+    if coleccion_coladas.uniq.size != coleccion_coladas.size
+      errors.add(:base, 'Número de coladas repetidas')
+    end
+  end
 
   def self.search(search)
     query = {}
@@ -82,11 +98,11 @@ class Certificado < ActiveRecord::Base
     end
 
     #puts query.collect {|key, value| value[:parameter]}
-    conditions = query.collect {|key, value| value[:parameter]}
+    conditions = query.collect {|_, value| value[:parameter]}
     if query.empty?
       all
     else
-      joins(:coladas).where(query.collect {|key, value| value[:clause]}.join(' AND '), *conditions)
+      joins(:coladas).where(query.collect {|_, value| value[:clause]}.join(' AND '), *conditions)
     end
   end
 
@@ -97,7 +113,7 @@ class Certificado < ActiveRecord::Base
   def formato
     if adjunto_content_type == 'application/pdf'
       'pdf'
-    elsif adjunto_content_type == 'image/jpg'
+    elsif adjunto_content_type == 'image/jpg' || adjunto_content_type == 'image/jpeg'
       'jpg'
     else
       nil
@@ -110,6 +126,14 @@ class Certificado < ActiveRecord::Base
 
   def es_jpg?
     adjunto_content_type == 'image/jpg' || adjunto_content_type == 'image/jpeg'
+  end
+
+  def dir_sucursal
+    sucursal.nombre.underscore.gsub(/\s/, '_')
+  end
+
+  def adjunto_nombre
+    "#{system_id}.#{formato}"
   end
 
   private
