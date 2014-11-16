@@ -16,7 +16,9 @@
     <div>
       <ul class="nav navbar-nav">
         <div class="" style=""><img src="/images/banner.gif" /></div>
-        <li class="active"><%= render 'devise/menu/login_items' %></li>
+        <li class="active">
+              <%= render 'devise/menu/login_items' %>
+        </li>
       </ul>
     </div>
   </div>
@@ -64,15 +66,6 @@
     <div class="alert-success alert"><p style="color:darkgreen"><%= notice %></p></div>
   <% end %>
 </article>
-
-<!-- <nav class="hierrobeco">
-  <ul class="">
-    <li><%= link_to 'Certificados', certificados_path, :class => '' %></li>
-    <li><%= link_to 'Proveedores',  proveedors_path,   :class => '' %></li>
-    <li><%= link_to 'Productos',  productos_path,   :class => '' %></li>
-    <li><%= link_to 'Usuarios',  users_path,   :class => '' %></li>
-  </ul>
-</nav> -->
 
 <p>Para reportar problemas en el sistema contactar al departamento de computación. Extensión: 228-229.
 </p>

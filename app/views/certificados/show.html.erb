@@ -6,22 +6,20 @@
 </ol>
 <% end %>
 
-<div class="panel panel-primary">
-  <div class="panel-heading" style="font-size: large;">Certificado</div>
-  <div class="panel-body">
+<% unless @xhr %>
+  <div class="panel panel-primary">
+    <div class="panel-heading" style="font-size: large;">Certificado</div>
+    <div class="panel-body">
 
-  <% unless @xhr %>
+
     <p>Vista previa</p>
     <% if @certificado.es_pdf? %>
       <iframe src="/pdfjs/web/viewer.html?file=<%="#{@certificado.adjunto.url}" %>" style="border: 0" width="50%" height="600" frameborder="0" scrolling="no"></iframe>
     <% elsif @certificado.es_jpg? %>
       <img src="<%="#{@certificado.adjunto.url}" %>" width="20%" height="20%">
     <% end %>
-  <% end %>
 
-  <p><strong>id de base de datos:</strong>
-    <%= @certificado.id %>
-  </p>
+<% end %>
 
   <p><strong>Identificador de sistema:</strong>
     <%= @certificado.system_id %>
@@ -62,12 +60,14 @@
   </p>
 
   <% unless @certificado.adjunto.nil? %>
-    <a href="<%= @certificado.adjunto.url %>" download="<%="#{@certificado.adjunto_nombre}" %>">Descargar certificado</a>
+    <a href="<%= @certificado.adjunto.url %>" download="<%="#{@certificado.adjunto_nombre}"%>" style="color:#428bca" >Descargar certificado</a>
   <% end %>
-  </div>
-</div>
+
+
 
 <% unless @xhr %>
+    </div>
+    </div>
     <ol class="breadcrumb">
       <li><%= link_to 'Inicio', home_index_path %></li>
       <li><%= link_to 'Volver', certificados_path %></li>
