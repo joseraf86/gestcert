@@ -6,6 +6,21 @@ es:
         one:   certificado
         few:   certificados
         other: certificados
+      proveedor:
+        zero:  proveedor
+        one:   proveedor
+        few:   proveedores
+        other: proveedores
+      producto:
+        zero:  producto
+        one:   producto
+        few:   productos
+        other: productos
+      sucursal:
+        zero:  sucursal
+        one:   sucursal
+        few:   sucursales
+        other: sucursales
     page_entries_info:
       single_page:
         zero:  "Ningún elemento encontrado"
