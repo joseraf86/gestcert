@@ -3,6 +3,11 @@ es:
     attributes:
       proveedor:
         name: Nombre
+      user:
+        role: Rol
+        name: Nombre
+        password: Contraseña
+        password_confirmation: Confirmación de contraseña
   date:
     abbr_day_names:
     - dom
