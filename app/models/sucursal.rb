@@ -7,6 +7,8 @@ class Sucursal < ActiveRecord::Base
             presence: true
 
   validates :nombre,
-            :direccion,
+            length: { in: 1..32 }
+
+  validates :direccion,
             length: { in: 1..255 }
 end

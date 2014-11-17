@@ -7,5 +7,5 @@ class Colada < ActiveRecord::Base
   validates :numero,
             format: { with: NUMERIC_REGEX_WITH_HYPHEN },
             #uniqueness: { scope: :certificado, message: 'está repetido en el certificado' },
-            length: { maximum: 20 }
+            length: { maximum: 32 }
 end

@@ -2,10 +2,10 @@
 <%= form_for @producto, html: {class: 'form-horizontal'} do |f| %>
 
    <div class="form-group">
-      <%= f.label :codigo, class:'control-label col-xs-7' %>
+      <%= f.label :codigo, 'Código', class:'control-label col-xs-7' %>
       <div class="col-xs-12">
         <%= f.text_field :codigo,
-              class: 'input-sm form-control', style: '', placeholder: '' %>
+              class: 'input-sm form-control', style: '', placeholder: '', maxlength: 10 %>
       </div>
    </div>
 
@@ -24,17 +24,30 @@
       </div>
    </div>
 
-   <% if @producto.errors.any? %>
-      <div id="error_explanation">
-          <h2><%= pluralize(@producto.errors.count, "error") %> prohibited this producto from being saved:</h2>
-          <ul>
-            <% @producto.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-      </div>
-   <% end %>
+    <div style="clear: both;">
+      <% if @producto.errors.any? %>
+          <div id="error_explanation">
+            <% if @producto.errors.count > 1 %>
+                <h2>Ocurrieron <%= pluralize(@producto.errors.count, 'errores') %> mientras se guardaba el producto: </h2>
 
+                <ul>
+                  <% @producto.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                  <% end %>
+                </ul>
+            <% else %>
+                <h2>Ocurrió <%= pluralize(@producto.errors.count, 'error') %> mientras se guardaba el producto: </h2>
+
+                <ul>
+                  <% @producto.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                  <% end %>
+                </ul>
+            <% end %>
+          </div>
+      <% end %>
+
+</div>
 <% end %>
 
 

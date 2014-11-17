@@ -126,6 +126,6 @@ class CertificadosController < ApplicationController
     end
 
     def obtener_coleccion_coladas
-      @certificado.coleccion_coladas = params['certificado']['coladas_attributes'].collect {|k, v| v['numero']}.reject! { |c| c.empty? }
+      @certificado.coleccion_coladas = params['certificado']['coladas_attributes'].collect {|_, v| v['numero']}.reject { |c| c.empty? }
     end
 end

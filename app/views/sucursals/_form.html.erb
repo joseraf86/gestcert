@@ -1,19 +1,18 @@
-
 <%= form_for @sucursal, html: {class: 'form-horizontal'} do |f| %>
 
   <div class="col-xs-6">
 
     <div class="form-group">
-      <%= f.label :nombre, class:'control-label col-xs-7' %><br>
+      <%= f.label :nombre, class:'control-label col-xs-7' %>
       <div class="col-xs-12">
-        <%= f.text_field :nombre, class:'input-sm form-control' %>
+        <%= f.text_field :nombre, class:'input-sm form-control', maxlength: 32 %>
       </div>
     </div>
   </div>
 
   <div class="col-xs-6">
     <div class="form-group">
-      <%= f.label :organizacion_id, class:'control-label col-xs-7' %><br>
+      <%= f.label :organizacion_id, 'Organización', class:'control-label col-xs-7' %>
       <div class="col-xs-12">
         <%= f.collection_select(
                :organizacion_id,
@@ -29,7 +28,7 @@
   <div class="col-xs-12">
 
     <div class="form-group">
-      <%= f.label :direccion, class:'control-label col-xs-7' %><br>
+      <%= f.label :direccion, 'Dirección', class:'control-label col-xs-7' %>
       <div class="col-xs-12">
         <%= f.text_area :direccion, class:'input-sm form-control' %>
       </div>
@@ -43,18 +42,28 @@
 
   </div>
 
-  <div style="clear: both;">
-    <% if @sucursal.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@sucursal.errors.count, "error") %> prohibited this sucursal from being saved:</h2>
+    <div style="clear: both;">
+      <% if @sucursal.errors.any? %>
+          <div id="error_explanation">
+            <% if @sucursal.errors.count > 1 %>
+                <h2>Ocurrieron <%= pluralize(@sucursal.errors.count, 'errores') %> mientras se guardaba la sucursal: </h2>
 
-        <ul>
-          <% @sucursal.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  </div>
+                <ul>
+                  <% @sucursal.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                  <% end %>
+                </ul>
+            <% else %>
+                <h2>Ocurrió <%= pluralize(@sucursal.errors.count, 'error') %> mientras se guardaba la sucursal: </h2>
+
+                <ul>
+                  <% @sucursal.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                  <% end %>
+                </ul>
+            <% end %>
+          </div>
+      <% end %>
 
 <% end %>
+</div>

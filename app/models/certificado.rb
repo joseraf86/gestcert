@@ -45,7 +45,7 @@ class Certificado < ActiveRecord::Base
             :numero_guia_proveedor,
             :numero_codigo_producto,
             :numero_orden_compra,
-            length: { maximum: 20 }
+            length: { maximum: 32 }
 
   validate :coleccion_coladas_unicas
 
