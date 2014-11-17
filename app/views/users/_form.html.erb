@@ -1,7 +1,5 @@
-<div class="col-xs-12">
-
-  <%= form_for @user, html: {class: 'form-horizontal'} do |f| %>
-
+<%= form_for @user, html: {class: 'form-horizontal'} do |f| %>
+  <div class="col-xs-12">
     <div class="col-xs-6">
 
       <div class="form-group">
@@ -24,7 +22,6 @@
             <%= f.password_field :password_confirmation, class:'input-sm form-control' %>
           </div>
       </div>
-
     </div>
 
     <div class="col-xs-6">
@@ -50,9 +47,8 @@
           %>
           </div>
         </div>
-
-      </div>
     </div>
+  </div>
 
     <div class="col-xs-12" style="text-align: right">
       <div style="margin: 0 auto">
