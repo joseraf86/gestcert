@@ -29,13 +29,16 @@ class Certificado < ActiveRecord::Base
 
   validates :system_id, uniqueness: true
 
-  ALPHANUMERIC_REGEX = /\A[-a-zA-Z0-9]+\z/
+  ALPHANUMERIC_REGEX = /\A[-a-zA-Z0-9]*\z/
   validates :numero_certificado,
             :numero_guia_proveedor,
             :numero_codigo_producto,
             format: { with: ALPHANUMERIC_REGEX }
 
-  NUMERIC_REGEX = /\A[0-9]+\z/
+  validates :numero_certificado, presence: true
+
+
+  NUMERIC_REGEX = /\A[0-9]*\z/
   validates :numero_orden_compra, format: { with: NUMERIC_REGEX }
 
   validates :numero_certificado,
