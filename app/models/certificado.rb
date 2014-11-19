@@ -1,4 +1,6 @@
 class Certificado < ActiveRecord::Base
+  has_paper_trail
+
   self.per_page = 15
 
   attr_accessor :coleccion_coladas

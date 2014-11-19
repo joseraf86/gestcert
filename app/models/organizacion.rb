@@ -1,4 +1,6 @@
 class Organizacion < ActiveRecord::Base
+  has_paper_trail
+
   has_many :sucursals
 
   ALPHANUMERIC_REGEX = /\A[-a-zA-Z0-9]+\z/

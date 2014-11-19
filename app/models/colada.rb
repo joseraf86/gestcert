@@ -1,4 +1,6 @@
 class Colada < ActiveRecord::Base
+  has_paper_trail
+
   belongs_to :certificado, inverse_of: :coladas
   #validates :certificado, presence: true
 

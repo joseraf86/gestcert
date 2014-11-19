@@ -1,4 +1,6 @@
 class Proveedor < ActiveRecord::Base
+  has_paper_trail
+
   self.per_page = 15
 
   has_many :certificados

@@ -1,4 +1,6 @@
 class Producto < ActiveRecord::Base
+  has_paper_trail
+
   self.per_page = 15
 
   ALPHANUMERIC_REGEX = /\A[-a-zA-Z0-9]+\z/

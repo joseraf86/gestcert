@@ -48,6 +48,9 @@ gem 'devise'
 gem 'the_role', '~> 2.5.2'
 gem 'the_role_bootstrap3_ui'
 
+# Auditoria
+gem 'paper_trail', '~> 3.0.6'
+
 # Carga de archivos
 gem 'paperclip', '~> 4.2'
 
