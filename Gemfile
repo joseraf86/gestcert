@@ -41,17 +41,19 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 ## Gemas adicionales
-# Authenticacion
+# Autenticacion
 gem 'devise'
 
-# Authorization
+# Autorizacion
 gem 'the_role', '~> 2.5.2'
 gem 'the_role_bootstrap3_ui'
 
-# File upload
+# Carga de archivos
 gem 'paperclip', '~> 4.2'
 
-# Dump database contents to seed.rb file
+# Volcar los contenidos de la base de datos al archivo db/seed.rb
+# db/seeds.rb.clean tiene los valores originales del sistema
+#
 gem 'seed_dump'
 
 # Paginacion

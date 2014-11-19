@@ -20,3 +20,4 @@ User.create!([
   {name: "deposito-puerto-ordaz", password: "puerto-ordaz", password_confirmation: "puerto-ordaz", remember_created_at: nil, role_id: 2, sucursal_id: 4},
 ])
 
+
