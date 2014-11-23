@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  # OPTIMIZE Heredar filtros comunes en los controladores
   include TheRole::Controller
 
   # Prevent CSRF attacks by raising an exception.
