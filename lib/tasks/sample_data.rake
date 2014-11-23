@@ -6,9 +6,10 @@ namespace :db do
       reset_db
       ActiveRecord::Base.transaction do
         make_users
-        make_proveedores
         make_certificados
-        make_productos
+        make_csv_records 'Proveedor'
+        make_csv_records 'Producto'
+        proveedores_nacionales
       end
     end
   end
@@ -17,35 +18,33 @@ end
 def reset_db
   Rake::Task['db:drop'].invoke
   Rake::Task['db:create'].invoke
-  Rake::Task['db:migrate'].invoke
+  Rake::Task['db:schema:load'].invoke
   Rake::Task['db:seed'].invoke
 end
 
 # Crear usuarios dummy
 def make_users
   User.create!([
-    {name: "jose", password: "jose", password_confirmation: "jose", remember_created_at: nil, role_id: 1, sucursal_id: 2},
-    {name: "elisa", password: "elisa", password_confirmation: "elisa", remember_created_at: nil, role_id: 2, sucursal_id: 1},
-    {name: "fredys", password: "fredys", password_confirmation: "fredys", remember_created_at: nil, role_id: 3, sucursal_id: 3}
+    {name: "jose", password: "jose", password_confirmation: "jose", remember_created_at: nil, role_id: 3, sucursal_id: 1},
+    {name: "elisa", password: "elisa", password_confirmation: "elisa", remember_created_at: nil, role_id: 3, sucursal_id: 2},
+    {name: "fredys", password: "fredys", password_confirmation: "fredys", remember_created_at: nil, role_id: 3, sucursal_id: 3},
+    {name: "oscar", password: "oscar", password_confirmation: "oscar", remember_created_at: nil, role_id: 3, sucursal_id: 4}
     ])
 end
 
-def make_proveedores
-  Proveedor.create!([
-    {name: "SIDOR", rif: "J-234234", nacional: true},
-    {name: "Ferrominera del Orinoco", rif: "J-974327", nacional: true},
-    {name: "Materiales ABC", rif: "G-435234", nacional: true},
-    {name: "Metales Chuo", rif: "J-876123", nacional: false}
-  ])
+def make_csv_records(object, strict=false)
+  require 'csv'
+  model = Object.const_get object
+  CSV.parse(File.read("#{Rails.root.to_path}/lib/tasks/#{object.downcase.pluralize}.csv"), headers: true).each do |item|
+    model.new(item.to_hash).save!(validate: strict)
+  end
 end
 
 # TODO Crear las coladas con cada certificado y asociar el pdf/jpg
 def make_certificados; end
 
-def make_productos
-  Producto.create!([
-    {codigo: "xd-6744534", descripcion: "Cabillas"},
-    {codigo: "c4-564-777", descripcion: "Laminas de metal"}
-  ])
+
+def proveedores_nacionales
+  Proveedor.all.each {|proveedor| proveedor.nacional= true; proveedor.save!}
 end
 

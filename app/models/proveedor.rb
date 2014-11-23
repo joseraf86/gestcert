@@ -6,12 +6,17 @@ class Proveedor < ActiveRecord::Base
   has_many :certificados
 
   validates :name,
-            length: { in: 1..32 }
+            length: { in: 1..64 }
 
-  ALPHANUMERIC_REGEX = /\A[-a-zA-Z0-9]+\z/
+  ALPHANUMERIC_REGEX = /\A[-a-zA-Z0-9]*\z/
+
+  validates :codigo,
+            length: { in: 1..32 },
+            format: { with: ALPHANUMERIC_REGEX }
+
   validates :rif,
             format: { with: ALPHANUMERIC_REGEX },
-            length: { in: 1..32 }
+            length: { maximum: 32 }
 
   validates :nacional,
             inclusion: { in: [true, false] }

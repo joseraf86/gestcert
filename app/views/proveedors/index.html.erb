@@ -20,7 +20,7 @@
   <thead>
   <tr>
     <th>Nombre</th>
-    <th>RIF</th>
+    <th>Código</th>
     <th>Nacional</th>
     <th colspan="3"></th>
   </tr>
@@ -30,7 +30,7 @@
   <% @proveedors.each do |proveedor| %>
       <tr>
         <td><%= proveedor.name %></td>
-        <td><%= proveedor.rif %></td>
+        <td><%= proveedor.codigo %></td>
         <td>
           <% if proveedor.nacional %>
               Si

@@ -7,7 +7,14 @@
       <div class="form-group">
         <%= f.label :nombre, for: 'proveedor_name', class:'control-label col-xs-7' %>
         <div class="col-xs-6">
-          <%= f.text_field :name, class:'input-sm form-control', maxlength: 32 %>
+          <%= f.text_field :name, class:'input-sm form-control', maxlength: 64 %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'Código', for: 'proveedor_codigo', class:'control-label col-xs-7' %>
+        <div class="col-xs-6">
+          <%= f.text_field :codigo, class:'input-sm form-control', maxlength: 32 %>
         </div>
       </div>
 

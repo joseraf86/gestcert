@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119132109) do
+ActiveRecord::Schema.define(version: 20141122055626) do
 
   create_table "certificados", force: true do |t|
     t.string   "numero_certificado"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20141119132109) do
     t.boolean  "nacional"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "codigo"
   end
 
   create_table "roles", force: true do |t|
