@@ -14,7 +14,7 @@
 
     <p>Vista previa</p>
     <% if @certificado.es_pdf? %>
-      <iframe src="/pdfjs/web/viewer.html?file=<%="#{@certificado.adjunto.url}" %>" style="border: 0" width="50%" height="600" frameborder="0" scrolling="no"></iframe>
+      <iframe src="/pdfjs/web/viewer.html?file=<%="#{@certificado.adjunto.url}" %>" style="border: 0" width="95%" height="600" frameborder="0" scrolling="no"></iframe>
     <% elsif @certificado.es_jpg? %>
       <img src="<%="#{@certificado.adjunto.url}" %>" width="20%" height="20%">
     <% end %>
