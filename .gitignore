@@ -30,3 +30,6 @@
 /respaldos
 /public/system
 /public/certificados
+
+# Ignore server PIDs
+/pids/unicorn.pid
