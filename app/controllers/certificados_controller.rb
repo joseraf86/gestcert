@@ -1,7 +1,7 @@
 class CertificadosController < ApplicationController
   before_action :set_certificado, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!#, except: [:index, :show]
-  before_action :role_required#,  except: [:index, :show]
+  before_action :role_required,  except: :serve
   before_action :validacion_sucursal, only: [:edit, :update, :destroy]
 
   # GET /certificados
@@ -95,6 +95,27 @@ class CertificadosController < ApplicationController
                     notice: 'El certificado fue eliminado exitosamente.'}
       format.json { head :no_content }
     end
+  end
+
+  def serve
+    cert = Certificado.find(params[:id])
+    if cert.adjunto_content_type != 'application/pdf'
+      Prawn::Document.generate("#{Rails.root.to_path}/tmp/#{params[:id]}",
+                             page_layout: :landscape,
+                             margin: 0) do |pdf|
+
+        bg = cert.adjunto.path
+        pdf.image bg, fit: [790, 700]
+      end
+      path ="#{Rails.root.to_path}/tmp/#{params[:id]}"
+    else
+      path = cert.adjunto.path
+    end
+    send_file( path,
+               disposition: 'inline',
+               type: 'application/pdf',
+               x_sendfile: true )
+
   end
 
   private

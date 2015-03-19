@@ -14,7 +14,7 @@
 
     <p>Vista previa</p>
     <% if @certificado.es_pdf? %>
-      <iframe src="/pdfjs/web/viewer.html?file=<%="#{@certificado.adjunto.url}" %>" style="border: 0" width="50%" height="600" frameborder="0" scrolling="no"></iframe>
+      <iframe src="/pdfjs/web/viewer.html?file=<%="#{@certificado.adjunto.url}" %>" style="border: 0" width="95%" height="600" frameborder="0" scrolling="no"></iframe>
     <% elsif @certificado.es_jpg? %>
       <img src="<%="#{@certificado.adjunto.url}" %>" width="20%" height="20%">
     <% end %>
@@ -60,7 +60,8 @@
   </p>
 
   <% unless @certificado.adjunto.nil? %>
-    <a href="<%= @certificado.adjunto.url %>" download="<%="#{@certificado.adjunto_nombre}"%>" style="color:#428bca" >Descargar certificado</a>
+    <!-- <a href="<%= @certificado.adjunto.url %>" download="<%="#{@certificado.adjunto_nombre}"%>" style="color:#428bca" >Descargar certificado</a> -->
+    <a href="/getcert/<%= @certificado.id %>" style="color:#428bca" >Descargar como PDF</a>
   <% end %>
 
 

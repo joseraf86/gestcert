@@ -65,6 +65,9 @@ gem 'will_paginate', '~> 3.0'
 # Visor pdf
 gem 'pdfjs_rails'
 
+# Creador de archivos pdf
+gem 'prawn'
+
 # Herramientas de desarrollo
 group :development do
   gem 'better_errors'
