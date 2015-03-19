@@ -100,14 +100,14 @@ class CertificadosController < ApplicationController
   def serve
     cert = Certificado.find(params[:id])
     if cert.adjunto_content_type != 'application/pdf'
-      Prawn::Document.generate("#{Rails.root.to_path}/tmp/#{params[:id]}",
+      Prawn::Document.generate("#{Rails.root.to_path}/tmp/#{params[:id]}.pdf",
                              page_layout: :landscape,
                              margin: 0) do |pdf|
 
         bg = cert.adjunto.path
         pdf.image bg, fit: [790, 700]
       end
-      path ="#{Rails.root.to_path}/tmp/#{params[:id]}"
+      path ="#{Rails.root.to_path}/tmp/#{params[:id]}.pdf"
     else
       path = cert.adjunto.path
     end
