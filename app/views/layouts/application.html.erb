@@ -47,10 +47,10 @@
       <ul class="nav navbar-nav">
         <li><%= link_to 'Certificados', certificados_path %></li>
         <li><%= link_to 'Proveedores',  proveedors_path %></li>
-        <li><%= link_to 'Productos',  productos_path %></li>
-        <li><%= link_to 'Sucursales',  sucursals_path %></li>
-        <li><%= link_to 'Usuarios',  users_path if current_user.admin? %></li>
-        <li><%= link_to 'Roles',  admin_roles_path if current_user.admin? %></li>
+        <li><%= link_to 'Productos',    productos_path %></li>
+        <li><%= link_to 'Sucursales',   sucursals_path %></li>
+        <li><%= link_to 'Usuarios',     users_path if current_user.admin? %></li>
+        <li><%= link_to 'Roles',       admin_roles_path if current_user.admin? %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

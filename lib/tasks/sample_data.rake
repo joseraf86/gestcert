@@ -2,16 +2,16 @@ namespace :db do
   desc 'Fill development database with sample data'
   task populate: :environment do
 
-    if Rails.env.development?
-      reset_db
+    #if Rails.env.development?
+      #reset_db
       ActiveRecord::Base.transaction do
-        make_users
-        make_certificados
+        #make_users
+        #make_certificados
         make_csv_records 'Proveedor'
         make_csv_records 'Producto'
         proveedores_nacionales
       end
-    end
+    #end
   end
 end
 

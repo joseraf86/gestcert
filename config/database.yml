@@ -13,8 +13,8 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password: root
+  username: gestcert
+  password: gestcert
   socket: /var/run/mysqld/mysqld.sock
 
 development:
@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: gestcert_production
-  username: root #gestcert
-  password: root #<%= ENV['GESTCERT_DATABASE_PASSWORD'] %>
+  username: gestcert
+  password: gestcert #<%= ENV['GESTCERT_DATABASE_PASSWORD'] %>
